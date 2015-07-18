@@ -23,6 +23,9 @@ PATH="${PATH}:/Applications/MAMP/Library/bin"
 # solr
 PATH="${PATH}:/opt/solr-5.2.0/bin"
 
+# make sure /usr/local/bin occurs before /usr/bin in $PATH
+PATH="/usr/local/bin:${PATH}"
+
 export PATH
 
 
@@ -53,6 +56,10 @@ PYTHONPATH="${PYTHONPATH}:/Users/kylebebak/Library/Python/2.7/lib/python/site-pa
 
 export PYTHONPATH
 
+
+# virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/local/bin/virtualenvwrapper.sh
 
 
 
@@ -100,7 +107,7 @@ alias gsed='gsed -r'
 
 alias ports='lsof -nP | grep -i listen'
 
-alias ff='find . 2> /dev/null | ggrep'
+alias ff='find . 2> /dev/null | ggrep -E'
 
 alias ll='ls -lAh'
 
@@ -143,8 +150,12 @@ alias mysql='/Applications/MAMP/Library/bin/mysql'
 
 alias jc='javac *.java'
 
+alias p='python'
 alias p2='python'
 alias p3='python3'
+alias ip='ipython --no-confirm-exit'
+alias ip2='/usr/local/bin/ipython --no-confirm-exit'
+alias ip3='ipython3 --no-confirm-exit'
 
 
 	#----------------------------------------
@@ -175,6 +186,18 @@ alias tk='tmux kill-session -t'
 	# redis
 	#----------------------------------------
 alias redis='redis-server /usr/local/etc/redis.conf'
+
+
+
+
+
+#-----------------------------------------------------------------
+# run custom startup scripts
+#-----------------------------------------------------------------
+
+# load notes init script for tab completions
+which notes >/dev/null && . "$( notes -i )"
+
 
 
 
@@ -222,10 +245,13 @@ function mr(){
 }
 
 
+  # shortcuts for "seeding" text into the shell prompt
+  # ––––––––––––––––––––––––––––––
+function rep(){
+	print -z '^^^:g&'
+}
 
-#-----------------------------------------------------------------
-# run custom startup scripts
-#-----------------------------------------------------------------
 
-# load notes init script for tab completions
-which notes >/dev/null && . "$( notes -i )"
+
+
+
