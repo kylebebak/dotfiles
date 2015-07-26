@@ -107,13 +107,12 @@ alias gsed='gsed -r'
 
 alias ports='lsof -nP | grep -i listen'
 
-alias ff='find . 2> /dev/null | ggrep -E'
+alias ff='find . 2>/dev/null | ggrep -E'
 
 alias ll='ls -lAh'
 
 # copy path of working directory
 alias cpwd='printf `pwd` | pbcopy'
-
 
 
 	#----------------------------------------
@@ -122,9 +121,7 @@ alias cpwd='printf `pwd` | pbcopy'
 alias root='cd /Users/kylebebak/Desktop/Dropbox/Programming/htdocs'
 alias code='cd /Users/kylebebak/Desktop/Dropbox/Programming'
 alias temp='cd /Users/kylebebak/Desktop/temp'
-alias work='cd /Users/kylebebak/Dropbox/Work'
-alias opi='cd /Users/kylebebak/Dropbox/Work/OPI/repos'
-alias tuts='cd /Users/kylebebak/Desktop/tutorials'
+alias tuts='cd /Users/kylebebak/Desktop/Tutorials'
 alias bin='cd /Users/kylebebak/Dropbox/Programming/__bin'
 
 
@@ -171,7 +168,8 @@ alias go='git checkout'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias grs='git remote show origin'
-alias gall='git add -u :/'
+alias gall='git add -u :/ && git add .'
+alias gpp='git push origin HEAD'
 
 
 	#----------------------------------------
@@ -244,12 +242,6 @@ function mr(){
 
 }
 
-
-  # shortcuts for "seeding" text into the shell prompt
-  # ––––––––––––––––––––––––––––––
-function rep(){
-	print -z '^^^:g&'
-}
 
 
 
