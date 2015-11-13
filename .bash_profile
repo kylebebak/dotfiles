@@ -12,7 +12,7 @@
 # shell
 
 # user bin
-PATH="${PATH}:/Users/kylebebak/bin"
+PATH="${PATH}:~/bin"
 
 # postgres
 PATH="${PATH}:/Applications/SQL/Postgres.app/Contents/MacOS/bin"
@@ -39,7 +39,7 @@ export PATH
 
 # adding a directory to the classpath can be done as follows
 
-# CLASSPATH=.:/Users/kylebebak/Desktop/Dropbox/Programming/Eclipse/javaLibraries/*
+# CLASSPATH=.:~/Desktop/Dropbox/Programming/Eclipse/javaLibraries/*
 # export CLASSPATH
 
 
@@ -50,7 +50,7 @@ export PATH
 
 PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 PYTHONPATH="${PYTHONPATH}:/Library/Python/2.7/site-packages"
-PYTHONPATH="${PYTHONPATH}:/Users/kylebebak/Library/Python/2.7/lib/python/site-packages"
+PYTHONPATH="${PYTHONPATH}:~/Library/Python/2.7/lib/python/site-packages"
 # PYTHONPATH="${PYTHONPATH}:/usr/local/Cellar/phpsh/1.3/lib/python2.7/site-packages/phpsh"
 
 
@@ -73,8 +73,14 @@ export GNUTERM=x11
 # ruby
 
 # rbevn
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+
+# custom bin
+export PATH="$HOME/Dropbox/Programming/__bin/math:$PATH"
+export PATH="$HOME/Dropbox/Programming/__bin/notes:$PATH"
+export PATH="$HOME/Dropbox/Programming/__bin/other:$PATH"
 
 
 
@@ -118,11 +124,11 @@ alias cpwd='printf `pwd` | pbcopy'
 	#----------------------------------------
 	# shortcuts
 	#----------------------------------------
-alias root='cd /Users/kylebebak/Desktop/Dropbox/Programming/htdocs'
-alias code='cd /Users/kylebebak/Desktop/Dropbox/Programming'
-alias temp='cd /Users/kylebebak/Desktop/temp'
-alias tuts='cd /Users/kylebebak/Desktop/Tutorials'
-alias bin='cd /Users/kylebebak/Dropbox/Programming/__bin'
+alias root='cd ~/Dropbox/Programming/htdocs'
+alias code='cd ~/Dropbox/Programming'
+alias temp='cd ~/Desktop/temp'
+alias tuts='cd ~/Desktop/Tutorials'
+alias bin='cd ~/Dropbox/Programming/__bin'
 
 
 	#----------------------------------------
