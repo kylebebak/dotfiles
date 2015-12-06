@@ -1,9 +1,5 @@
 # in zsh, this is not sourced by default. instead, ~/.zshrc is sourced, so that file has a line which sources this one
 
-# echo $PATH, echo $PYTHONPATH, echo $R_HOME, etc
-# a given environment variable need only be exported once, and then extra paths can be appended to it
-
-
 
 #-----------------------------------------------------------------
 # path environment variables
@@ -14,48 +10,23 @@
 # user bin
 PATH="${PATH}:~/bin"
 
-# postgres
-PATH="${PATH}:/Applications/SQL/Postgres.app/Contents/MacOS/bin"
-
-# mamp
-PATH="${PATH}:/Applications/MAMP/Library/bin"
-
-# solr
-PATH="${PATH}:/opt/solr-5.2.0/bin"
-
 # make sure /usr/local/bin occurs before /usr/bin in $PATH
 PATH="/usr/local/bin:${PATH}"
 
-export PATH
-
+# custom bin
+PATH="$HOME/Dropbox/Programming/__bin/math:$PATH"
+PATH="$HOME/Dropbox/Programming/__bin/notes:$PATH"
+PATH="$HOME/Dropbox/Programming/__bin/other:$PATH"
 
 
 
 # java
 
-# export JAVA_HOME=$(/usr/libexec/java_home)
-
-# setting and exporting java CLASSPATH in .bash_profile isn't necessary, because you can simply place .jar files in /Library/Java/Extensions and they are added automatically to the classpath
-
-# adding a directory to the classpath can be done as follows
-
-# CLASSPATH=.:~/Desktop/Dropbox/Programming/Eclipse/javaLibraries/*
-# export CLASSPATH
-
-
+# setting and exporting java CLASSPATH isn't necessary, because you can place .jar files in /Library/Java/Extensions
 
 
 
 # python
-
-PYTHONPATH="/usr/local/lib/python2.7/site-packages"
-PYTHONPATH="${PYTHONPATH}:/Library/Python/2.7/site-packages"
-PYTHONPATH="${PYTHONPATH}:~/Library/Python/2.7/lib/python/site-packages"
-# PYTHONPATH="${PYTHONPATH}:/usr/local/Cellar/phpsh/1.3/lib/python2.7/site-packages/phpsh"
-
-
-export PYTHONPATH
-
 
 # virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -63,26 +34,15 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 
 
-# so that Gnuplot can use the x11 terminal
-export GNUTERM=x11
-# export GNUTERM=aqua
-
-
-
-
 # ruby
 
 # rbevn
-export PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 
-# custom bin
-export PATH="$HOME/Dropbox/Programming/__bin/math:$PATH"
-export PATH="$HOME/Dropbox/Programming/__bin/notes:$PATH"
-export PATH="$HOME/Dropbox/Programming/__bin/other:$PATH"
 
-
+export PATH
 
 
 
@@ -112,6 +72,7 @@ alias sed='sed -E'
 alias gsed='gsed -r'
 
 alias ports='lsof -nP | grep -i listen'
+alias process='ps -ef | grep -i'
 
 alias ff='find . 2>/dev/null | ggrep -E'
 
@@ -124,17 +85,12 @@ alias cpwd='printf `pwd` | pbcopy'
 	#----------------------------------------
 	# shortcuts
 	#----------------------------------------
-alias root='cd ~/Dropbox/Programming/htdocs'
 alias code='cd ~/Dropbox/Programming'
-alias temp='cd ~/Desktop/temp'
-alias tuts='cd ~/Desktop/Tutorials'
-alias bin='cd ~/Dropbox/Programming/__bin'
 
 
 	#----------------------------------------
 	# app shortcuts
 	#----------------------------------------
-alias mdown='open -a MacDown'
 alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
@@ -144,21 +100,11 @@ alias sbl='open -a "Sublime Text"'
 	#----------------------------------------
 	# shells and interpreters
 	#----------------------------------------
-# so that mamp's version of php can be easily called from the command line, php5.2.17/ php5.3.14/ php5.4.4/
-alias phpmamp='/Applications/MAMP/bin/php/php5.5.14/bin/php'
-
-# create a command line alias for the mysql bundled with MAMP
-alias mysql='/Applications/MAMP/Library/bin/mysql'
-# another possibility: ln -s /Applications/MAMP/Library/bin/mysql /usr/bin/mysql
 
 alias jc='javac *.java'
 
 alias p='python'
-alias p2='python'
-alias p3='python3'
 alias ip='ipython --no-confirm-exit'
-alias ip2='/usr/local/bin/ipython --no-confirm-exit'
-alias ip3='ipython3 --no-confirm-exit'
 
 
 	#----------------------------------------
@@ -190,8 +136,6 @@ alias tk='tmux kill-session -t'
 	# redis
 	#----------------------------------------
 alias redis='redis-server /usr/local/etc/redis.conf'
-
-
 
 
 
