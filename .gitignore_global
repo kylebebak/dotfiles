@@ -53,3 +53,7 @@ bkp.*
 ######################
 __*.txt
 __*.md
+
+# Ruby bundler config directory
+######################
+.bundle/
