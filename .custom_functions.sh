@@ -34,7 +34,6 @@ function mr(){
     # echo "${bold}`date -r ${tmst}`${normal}      ${filepath}"
     echo "`date -r ${tmst}`     `dirname ${filepath}`/${bold}`basename ${filepath}`${normal}"
   done
-
 }
 
 

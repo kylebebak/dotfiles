@@ -159,4 +159,4 @@ stty -ixon
 #-----------------------------------------------------------------
 # custom shell functions
 #-----------------------------------------------------------------
-source ~/.custom_functions
+source ~/.custom_functions.sh
