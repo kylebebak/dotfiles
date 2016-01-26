@@ -57,3 +57,17 @@ __*.md
 # Ruby bundler config directory
 ######################
 .bundle/
+
+# Sublime Text #
+######################
+*.sublime-project
+*.sublime-workspace
+*.autosave*
+
+# Node modules
+######################
+node_modules/
+
+# Generated files
+######################
+*.transpiled*
