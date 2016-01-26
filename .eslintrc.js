@@ -2,7 +2,7 @@ module.exports = {
     "rules": {
         "indent": [
             1,
-            4
+            2
         ],
         "quotes": [
             1,
@@ -19,7 +19,8 @@ module.exports = {
     },
     "env": {
         "es6": true,
-        "browser": true
+        "browser": true,
+        "node": true
     },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
