@@ -6,7 +6,7 @@ module.exports = {
         ],
         "quotes": [
             1,
-            "double"
+            "single"
         ],
         "linebreak-style": [
             2,
@@ -15,6 +15,12 @@ module.exports = {
         "semi": [
             1,
             "always"
+        ],
+        "comma-dangle": [
+            0,
+        ],
+        "no-unused-vars": [
+            1,
         ]
     },
     "env": {
@@ -24,7 +30,9 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "ecmaFeatures": {
+        "modules": true,
         "jsx": true,
+        "forOf": true,
         "experimentalObjectRestSpread": true
     },
     "plugins": [
