@@ -40,10 +40,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-
-
 export PATH
 
+# android
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 
 #-----------------------------------------------------------------
@@ -137,6 +137,12 @@ alias tk='tmux kill-session -t'
 	#----------------------------------------
 alias redis='redis-server /usr/local/etc/redis.conf'
 
+
+	#----------------------------------------
+	# docker
+	#----------------------------------------
+alias dm='docker-machine'
+alias dk='docker'
 
 
 #-----------------------------------------------------------------
