@@ -6,6 +6,7 @@ function countdown(){
    done
 }
 
+
 function count(){
   date1=`date +%s`;
    while true; do
@@ -13,6 +14,7 @@ function count(){
     sleep 0.1
    done
 }
+
 
 # get difference between HEAD and previous commit
 function gdiff(){
@@ -23,6 +25,7 @@ function gdiffall(){
   git diff `git rev-parse HEAD` `git rev-parse HEAD~$1`
 }
 
+
 # get N most recently modified files within current directory and all subdirectories
 function mr(){
   bold=`tput bold`
@@ -31,13 +34,35 @@ function mr(){
   find . -type f -print0 | xargs -0 stat -f "%m %N" | sort -rn | head -$1 | while read line
   do
     read -r tmst filepath <<< "$line"
-    # echo "${bold}`date -r ${tmst}`${normal}      ${filepath}"
     echo "`date -r ${tmst}`     `dirname ${filepath}`/${bold}`basename ${filepath}`${normal}"
   done
 }
 
 
+# make or remove link to <executable> in ~/bin. i wrote this function when
+# working on `notes`, so that could quickly enable the dev version for
+# testing, and then disable it to avoid conflicts with the homebrew keg.
+# this depends on ${HOME}/bin coming before /usr/local/bin $PATH
+function userbin(){
+  bin="${HOME}/bin"
+  exe=`basename $1`
+  tgt="${bin}/${exe}"
+  src="$(pwd)/$1"
 
+  if [ -L $tgt ]; then
+    rm $tgt
+    echo "removed ${exe} from ${bin}"
+    return 0
+  fi
 
+  if [ -f $src ]; then
+    ln -s $src $tgt
+    echo "linked ${src} to ${tgt}"
+    return 0
+  fi
+
+  echo "the file ${src} doesn't exist"
+  return 1
+}
 
 
