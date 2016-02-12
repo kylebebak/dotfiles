@@ -48,11 +48,9 @@ Thumbs.db
 *.~
 bkp.*
 
-
-# Notes #
+# Local #
 ######################
-__*.txt
-__*.md
+*.local*
 
 # Ruby bundler config directory
 ######################
@@ -70,4 +68,5 @@ node_modules/
 
 # Generated files
 ######################
-*.transpiled*
+*transpiled.*
+*bundle.*

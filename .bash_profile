@@ -7,22 +7,16 @@
 
 # shell
 
-# user bin
-PATH="${PATH}:~/bin"
-
 # make sure /usr/local/bin occurs before /usr/bin in $PATH
 PATH="/usr/local/bin:${PATH}"
 
-# custom bin
-PATH="$HOME/Dropbox/Programming/__bin/math:$PATH"
-PATH="$HOME/Dropbox/Programming/__bin/notes:$PATH"
-PATH="$HOME/Dropbox/Programming/__bin/other:$PATH"
-
+# user bin, make sure this shows up before /usr/local/bin in $PATH
+PATH="${HOME}/bin:${PATH}"
 
 
 # java
 
-# setting and exporting java CLASSPATH isn't necessary, because you can place .jar files in /Library/Java/Extensions
+# setting and exporting java CLASSPATH isn't necessary, because .jar files can go in /Library/Java/Extensions
 
 
 
@@ -165,4 +159,4 @@ stty -ixon
 #-----------------------------------------------------------------
 # custom shell functions
 #-----------------------------------------------------------------
-source ~/.custom_functions.sh
+source ~/dotfiles/.custom_functions.sh
