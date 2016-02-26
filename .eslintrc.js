@@ -1,6 +1,4 @@
 module.exports = {
-    "globals": {
-    },
     "rules": {
         "indent": [
             1,
