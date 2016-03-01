@@ -80,6 +80,7 @@ alias cpwd='printf `pwd` | pbcopy'
 	# shortcuts
 	#----------------------------------------
 alias code='cd ~/Dropbox/Programming'
+alias note='subl `notes -P`'
 
 
 	#----------------------------------------
