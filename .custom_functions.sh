@@ -39,30 +39,33 @@ function mr(){
 }
 
 
-# make or remove link to <executable> in ~/bin. i wrote this function when
+# make or remove link to <executable> in ~/.local/bin. i wrote this function when
 # working on `notes`, so that could quickly enable the dev version for
 # testing, and then disable it to avoid conflicts with the homebrew keg.
 # this depends on ${HOME}/bin coming before /usr/local/bin $PATH
 function userbin(){
-  bin="${HOME}/bin"
-  exe=`basename $1`
-  tgt="${bin}/${exe}"
-  src="$(pwd)/$1"
+  bin="${HOME}/.local/bin"
 
-  if [ -L $tgt ]; then
-    rm $tgt
-    echo "removed ${exe} from ${bin}"
-    return 0
-  fi
+  while test $# -gt 0; do
+    exe=`basename $1`
+    tgt="${bin}/${exe}"
+    src="$(pwd)/$1"
 
-  if [ -f $src ]; then
-    ln -s $src $tgt
-    echo "linked ${src} to ${tgt}"
-    return 0
-  fi
+    if [ -L $tgt ]; then
+      rm $tgt
+      echo "removed ${exe} from ${bin}"
+      shift && continue
+    fi
 
-  echo "the file ${src} doesn't exist"
-  return 1
+    if [ -f $src ]; then
+      ln -s $src $tgt
+      echo "linked ${src} to ${tgt}"
+      shift && continue
+    fi
+
+    echo "the file ${src} doesn't exist"
+    return 1
+  done
+
+  return 0
 }
-
-

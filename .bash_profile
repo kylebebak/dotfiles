@@ -11,7 +11,7 @@
 PATH="/usr/local/bin:${PATH}"
 
 # user bin, make sure this shows up before /usr/local/bin in $PATH
-PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
 
 
 # java
