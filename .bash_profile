@@ -5,6 +5,10 @@
 # path environment variables
 #-----------------------------------------------------------------
 
+
+# postgres.app
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 # shell
 
 # make sure /usr/local/bin occurs before /usr/bin in $PATH
@@ -26,6 +30,8 @@ PATH="${HOME}/.local/bin:${PATH}"
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
 
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
 
 
 # ruby
@@ -38,6 +44,7 @@ export PATH
 
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
 
 
 #-----------------------------------------------------------------
@@ -79,7 +86,7 @@ alias cpwd='printf `pwd` | pbcopy'
 	#----------------------------------------
 	# shortcuts
 	#----------------------------------------
-alias code='cd ~/Dropbox/Programming'
+alias code='cd ~/Dropbox/Code'
 
 
 	#----------------------------------------
