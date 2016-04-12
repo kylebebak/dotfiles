@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 setopt extended_glob
+setopt inc_append_history
 
 # source .bash_profile after sourcing all other config files
 source ~/.bash_profile

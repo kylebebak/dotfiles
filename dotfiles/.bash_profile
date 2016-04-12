@@ -166,4 +166,4 @@ stty -ixon
 #-----------------------------------------------------------------
 # custom shell functions
 #-----------------------------------------------------------------
-source ~/dotfiles/.custom_functions.sh
+source ~/.custom_functions.sh

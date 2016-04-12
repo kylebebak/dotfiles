@@ -1,0 +1,15 @@
+- hosts: all
+  vars:
+    home_path: "{{ ansible_env.HOME }}"
+
+  tasks:
+    - name: Enable history sharing and shortcuts in .bashrc
+      lineinfile: dest="{{ home_path }}/.bashrc" state=present line={{ item }}
+      with_items:
+        - export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+        - alias tl='tmux ls'
+        - alias ta='tmux attach -t'
+        - alias tk='tmux kill-session -t'
+
+    - name: Copy over .tmux.conf
+      copy: src=".tmux.ubuntu.conf" dest="{{ home_path }}/.tmux.conf"
