@@ -1,4 +1,8 @@
 module.exports = {
+    "globals": {
+        "$": true,
+        "google": true,
+    },
     "rules": {
         "indent": [
             1,

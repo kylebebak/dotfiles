@@ -42,7 +42,7 @@ function mr(){
 # make or remove link to <executable> in ~/.local/bin. i wrote this function when
 # working on `notes`, so that could quickly enable the dev version for
 # testing, and then disable it to avoid conflicts with the homebrew keg.
-# this depends on ${HOME}/bin coming before /usr/local/bin $PATH
+# this depends on ${HOME}/bin coming before /usr/local/bin in $PATH
 function userbin(){
   bin="${HOME}/.local/bin"
 
@@ -68,4 +68,19 @@ function userbin(){
   done
 
   return 0
+}
+
+# uses git branch -a to pass all branches to pick, and then passes
+# chosen branch to any command that operates on branches, via xargs
+# USAGE: gpb go, gbp git merge, gbp gd --name-only
+function gbp(){
+  # check if first arg is alias
+  alias $1 &>/dev/null
+  if [ $? -ne 0 ]; then
+    git branch -a | pick | xargs $*
+  else
+    cmd=`alias $1 | cut -d "=" -f 2 | tr -d "'"`
+    shift # remove alias, which was expanded and assigned to $cmd
+    git branch -a | pick | xargs `echo $cmd $*`
+  fi
 }

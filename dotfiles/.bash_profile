@@ -51,16 +51,16 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # ALIASES
 #-----------------------------------------------------------------
 
-	#----------------------------------------
-	# OSX
-	#----------------------------------------
+  #----------------------------------------
+  # OSX
+  #----------------------------------------
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 
-	#----------------------------------------
-	# UNIX
-	#----------------------------------------
+  #----------------------------------------
+  # UNIX
+  #----------------------------------------
 alias lf="ls -l | egrep -v '^d'"
 alias ldir="ls -l | egrep '^d'"
 
@@ -82,35 +82,34 @@ alias ll='ls -lAh'
 # copy path of working directory
 alias cpwd='printf `pwd` | pbcopy'
 
+alias hist='history | ggrep -E'
 
-	#----------------------------------------
-	# shortcuts
-	#----------------------------------------
+
+  #----------------------------------------
+  # shortcuts
+  #----------------------------------------
 alias code='cd ~/Dropbox/Code'
 
 
-	#----------------------------------------
-	# app shortcuts
-	#----------------------------------------
+  #----------------------------------------
+  # app shortcuts
+  #----------------------------------------
 alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
 
 
 
-	#----------------------------------------
-	# shells and interpreters
-	#----------------------------------------
+  #----------------------------------------
+  # shells and interpreters
+  #----------------------------------------
 
-alias jc='javac *.java'
-
-alias p='python'
 alias ip='ipython --no-confirm-exit'
 
 
-	#----------------------------------------
-	# git
-	#----------------------------------------
+  #----------------------------------------
+  # git
+  #----------------------------------------
 alias gs='git status'
 alias ga='git add'
 alias gb='git branch'
@@ -125,25 +124,33 @@ alias gall='git add -u :/ && git add .'
 alias gpp='git push origin HEAD'
 
 
-	#----------------------------------------
-	# tmux
-	#----------------------------------------
+  #----------------------------------------
+  # tmux
+  #----------------------------------------
 alias tl='tmux ls'
 alias ta='tmux attach -t'
 alias tk='tmux kill-session -t'
 
 
-	#----------------------------------------
-	# redis
-	#----------------------------------------
+  #----------------------------------------
+  # redis
+  #----------------------------------------
 alias redis='redis-server /usr/local/etc/redis.conf'
 
 
-	#----------------------------------------
-	# docker
-	#----------------------------------------
+  #----------------------------------------
+  # docker
+  #----------------------------------------
 alias dm='docker-machine'
 alias dk='docker'
+
+  #----------------------------------------
+  # pick
+  #----------------------------------------
+alias cdp='cd $(find . -type d | pick)'
+alias gop='git branch -a | pick | xargs git checkout'
+alias gmp='git branch -a | pick | xargs git merge'
+alias gdp='git branch -a | pick | xargs git diff'
 
 
 #-----------------------------------------------------------------
@@ -152,7 +159,6 @@ alias dk='docker'
 
 # load notes init script for tab completions
 which notes >/dev/null && . "$( notes -i )"
-
 
 
 #-----------------------------------------------------------------
