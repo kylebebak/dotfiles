@@ -70,17 +70,43 @@ function userbin(){
   return 0
 }
 
-# uses git branch -a to pass all branches to pick, and then passes
-# chosen branch to any command that operates on branches, via xargs
-# USAGE: gpb go, gbp git merge, gbp gd --name-only
-function gbp(){
-  # check if first arg is alias
+# pipes the results of the first arg, list_cmd, to pick, then pipes these results
+# to xargs so they can be executed by the remaining arguments, collectively called
+# $exec_cmd. the first arg in exec_cmd can be an alias. this function can be used
+# to build other functions that fix the list_cmd arg or the $exec_cmd args
+function _pick(){
+
+  # parse and remove --clean_cmd from args if it's present
+  args=("$@")
+  for ((i=0; i < $#; i++)) {
+    if [ "${args[$i]}" = "--clean_cmd" ]; then
+      args[$i]=()
+      clean_cmd="${args[$i]}"
+      args[$i]=()
+      break
+    fi
+  }
+  set -- "${args[@]}"
+
+  list_cmd="$1"
+  shift
+  # check if first arg after list_cmd is alias
   alias $1 &>/dev/null
   if [ $? -ne 0 ]; then
-    git branch -a | pick | xargs $*
+    `echo $list_cmd` | pick | xargs $*
   else
-    cmd=`alias $1 | cut -d "=" -f 2 | tr -d "'"`
-    shift # remove alias, which was expanded and assigned to $cmd
-    git branch -a | pick | xargs `echo $cmd $*`
+    exec_cmd=`alias $1 | cut -d "=" -f 2 | tr -d "'"`
+    shift # remove alias, which was expanded and assigned to $exec_cmd
+    `echo $list_cmd` | pick | xargs `echo $exec_cmd $*`
   fi
+}
+
+# USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
+function gbp(){
+  _pick "git branch -a" $*
+}
+
+# USAGE: ghp go, ghp gd --name-only, ...
+function ghp(){
+  _pick "git branch -a" $*
 }
