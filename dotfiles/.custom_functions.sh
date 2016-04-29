@@ -16,18 +16,8 @@ function count(){
 }
 
 
-# get difference between HEAD and previous commit
-function gdiff(){
-  git diff --name-only `git rev-parse HEAD` `git rev-parse HEAD~$1`
-}
-
-function gdiffall(){
-  git diff `git rev-parse HEAD` `git rev-parse HEAD~$1`
-}
-
-
 # get N most recently modified files within current directory and all subdirectories
-function mr(){
+function mrm(){
   bold=`tput bold`
   normal=`tput sgr0`
 
@@ -70,6 +60,7 @@ function userbin(){
   return 0
 }
 
+
 # pipes the results of the first arg, list_cmd. then to pick. then to the second arg,
 # clean_cmd. then to xargs so they can be executed by the remaining arguments,
 # collectively called $exec_cmd. the first arg in exec_cmd can be an alias.
@@ -97,10 +88,12 @@ function _pick(){
   fi
 }
 
+
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
   _pick "git branch -a" "cat" $*
 }
+
 
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
