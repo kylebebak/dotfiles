@@ -74,7 +74,7 @@ function userbin(){
 # clean_cmd. then to xargs so they can be executed by the remaining arguments,
 # collectively called $exec_cmd. the first arg in exec_cmd can be an alias.
 # this function can be used to build other functions that fix any of the three args
-# to create very fast utility functions
+# to create fast utility functions
 function _pick(){
   if [ $# -lt 3 ]; then
     echo "you must pass a list_cmd, and clean_cmd, and an exec_cmd to this function"
