@@ -70,43 +70,39 @@ function userbin(){
   return 0
 }
 
-# pipes the results of the first arg, list_cmd, to pick, then pipes these results
-# to xargs so they can be executed by the remaining arguments, collectively called
-# $exec_cmd. the first arg in exec_cmd can be an alias. this function can be used
-# to build other functions that fix the list_cmd arg or the $exec_cmd args
+# pipes the results of the first arg, list_cmd. then to pick. then to the second arg,
+# clean_cmd. then to xargs so they can be executed by the remaining arguments,
+# collectively called $exec_cmd. the first arg in exec_cmd can be an alias.
+# this function can be used to build other functions that fix any of the three args
+# to create very fast utility functions
 function _pick(){
-
-  # parse and remove --clean_cmd from args if it's present
-  args=("$@")
-  for ((i=0; i < $#; i++)) {
-    if [ "${args[$i]}" = "--clean_cmd" ]; then
-      args[$i]=()
-      clean_cmd="${args[$i]}"
-      args[$i]=()
-      break
-    fi
-  }
-  set -- "${args[@]}"
+  if [ $# -lt 3 ]; then
+    echo "you must pass a list_cmd, and clean_cmd, and an exec_cmd to this function"
+    return
+  fi
 
   list_cmd="$1"
   shift
+  clean_cmd="$1"
+  shift
+
   # check if first arg after list_cmd is alias
   alias $1 &>/dev/null
   if [ $? -ne 0 ]; then
-    `echo $list_cmd` | pick | xargs $*
+    eval "$list_cmd | pick | $clean_cmd | xargs $*"
   else
     exec_cmd=`alias $1 | cut -d "=" -f 2 | tr -d "'"`
     shift # remove alias, which was expanded and assigned to $exec_cmd
-    `echo $list_cmd` | pick | xargs `echo $exec_cmd $*`
+    eval "$list_cmd | pick | $clean_cmd | xargs $exec_cmd $*"
   fi
 }
 
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
-  _pick "git branch -a" $*
+  _pick "git branch -a" "cat" $*
 }
 
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  _pick "git branch -a" $*
+  _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }

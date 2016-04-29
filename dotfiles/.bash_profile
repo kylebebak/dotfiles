@@ -148,9 +148,6 @@ alias dk='docker'
   # pick
   #----------------------------------------
 alias cdp='cd $(find . -type d | pick)'
-alias gop='git branch -a | pick | xargs git checkout'
-alias gmp='git branch -a | pick | xargs git merge'
-alias gdp='git branch -a | pick | xargs git diff'
 
 
 #-----------------------------------------------------------------
