@@ -65,7 +65,7 @@ function userbin(){
 # clean_cmd. then to xargs so they can be executed by the remaining arguments,
 # collectively called $exec_cmd. the first arg in exec_cmd can be an alias.
 # this function can be used to build other functions that fix any of the three args
-# to create fast utility functions
+# to create fast utility functions or aliases
 function _pick(){
   if [ $# -lt 3 ]; then
     echo "you must pass a list_cmd, and clean_cmd, and an exec_cmd to this function"
@@ -99,3 +99,6 @@ function gbp(){
 function ghp(){
   _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }
+
+# find out how far ahead or behind current branch is compared with another branch
+alias gba="branch=`git rev-parse --abbrev-ref HEAD` && git branch -a | pick | xargs | awk -v branch=\"\$branch\" '{print branch\"...\"\$0}' | xargs git rev-list --left-right --count"
