@@ -82,8 +82,6 @@ alias ll='ls -lAh'
 # copy path of working directory
 alias cpwd='printf `pwd` | pbcopy'
 
-alias hist='history | ggrep -E'
-
 
   #----------------------------------------
   # shortcuts

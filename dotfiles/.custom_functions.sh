@@ -82,12 +82,17 @@ function _pick(){
   if [ $? -ne 0 ]; then
     eval "$list_cmd | pick | $clean_cmd | xargs $*"
   else
-    exec_cmd=`alias $1 | cut -d "=" -f 2 | tr -d "'"`
+    exec_cmd=$(alias $1 | cut -d "=" -f 2 | tr -d "'")
     shift # remove alias, which was expanded and assigned to $exec_cmd
     eval "$list_cmd | pick | $clean_cmd | xargs $exec_cmd $*"
   fi
 }
 
+
+# search history, filtering first with grep, then with pick
+function hist(){
+  $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
+}
 
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
@@ -99,14 +104,15 @@ function ghp(){
   _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }
 
+# pick a branch, compare files with current branch, then compare one of these files
+function gdb(){
+  branch=$(git branch -a | pick | xargs)
+  git diff $branch --name-only | pick | xargs git diff $branch --
+}
+
 # find out how far ahead or behind current branch is compared with another branch
 alias gba="branch=`git rev-parse --abbrev-ref HEAD` && git branch -a | pick | xargs | awk -v branch=\"\$branch\" '{print branch\"...\"\$0}' | xargs git rev-list --left-right --count"
 
 # pick a file that has changed since last commit
 alias gdp="git diff --name-only | pick | xargs git diff"
 
-# pick a branch, compare files with current branch, then compare one of these files
-function gdb(){
-  branch=`git branch -a | pick | xargs`
-  git diff $branch --name-only | pick | xargs git diff $branch --
-}
