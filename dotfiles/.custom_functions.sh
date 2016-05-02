@@ -111,7 +111,11 @@ function gdb(){
 }
 
 # find out how far ahead or behind current branch is compared with another branch
-alias gba="branch=`git rev-parse --abbrev-ref HEAD` && git branch -a | pick | xargs | awk -v branch=\"\$branch\" '{print branch\"...\"\$0}' | xargs git rev-list --left-right --count"
+function gbc(){
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  compare_branch=$(git branch -a | pick | xargs echo)
+  git rev-list --left-right --count ${current_branch}...${compare_branch}
+}
 
 # pick a file that has changed since last commit
 alias gdp="git diff --name-only | pick | xargs git diff"
