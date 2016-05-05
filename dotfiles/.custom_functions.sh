@@ -132,14 +132,22 @@ function gdbp(){
 
 # find out how far ahead or behind `this` is compared with `other`
 function gbc(){
-  this=$(_pick_branch)
+  if [ $# -eq 0 ]; then
+    this=$(_current_branch)
+  else
+    this=$(_pick_branch)
+  fi
   other=$(_pick_branch)
   git rev-list --left-right --count ${this}...${other}
 }
 
 # see all commits on `this` that are not on `other`, and vice versa
 function gbca(){
-  this=$(_pick_branch)
+  if [ $# -eq 0 ]; then
+    this=$(_current_branch)
+  else
+    this=$(_pick_branch)
+  fi
   other=$(_pick_branch)
   git log --stat ${other}..${this} && \
   git log --stat ${this}..${other}
