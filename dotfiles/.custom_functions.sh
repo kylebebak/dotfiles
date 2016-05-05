@@ -94,29 +94,53 @@ function hist(){
   $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
 }
 
+
+# git functions
+#-----------------------------------------------------------------
+
+# helper to get the current branch
+function _current_branch(){
+  echo $(git rev-parse --abbrev-ref HEAD)
+}
+
+# helper to pick a branch, local or remote. trims leading whitespace, and "*" if necessary
+function _pick_branch(){
+  echo $(git branch -a | pick | sed 's/^\*//'| xargs echo)
+}
+
+
+# SYNOPSIS: pick a branch and do something with it
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
   _pick "git branch -a" "cat" $*
 }
 
+# SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
   _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }
 
-# pick a branch, compare files with current branch, then compare one of these files. this function only works from the root directory of the repo
-function gdbp(){
-  branch=$(git branch -a | pick | xargs)
-  git diff $branch --name-only | pick | xargs git diff $branch --
-}
-
-# find out how far ahead or behind current branch is compared with another branch
-function gbc(){
-  current_branch=$(git rev-parse --abbrev-ref HEAD)
-  compare_branch=$(git branch -a | pick | xargs echo)
-  git rev-list --left-right --count ${current_branch}...${compare_branch}
-}
-
 # pick a file that has changed since last commit
 alias gdp="git diff --name-only | pick | xargs git diff"
 
+# pick other, compare files with current, then pick one of these files. this function only works from the root directory of the repo
+function gdbp(){
+  other=$(_pick_branch)
+  git diff $other --name-only | pick | xargs git diff $other --
+}
+
+# find out how far ahead or behind `this` is compared with `other`
+function gbc(){
+  this=$(_pick_branch)
+  other=$(_pick_branch)
+  git rev-list --left-right --count ${this}...${other}
+}
+
+# see all commits on `this` that are not on `other`, and vice versa
+function gbca(){
+  this=$(_pick_branch)
+  other=$(_pick_branch)
+  git log --stat ${other}..${this} && \
+  git log --stat ${this}..${other}
+}

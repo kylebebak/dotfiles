@@ -18,10 +18,9 @@ PATH="/usr/local/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 
-# java
+# node
 
-# setting and exporting java CLASSPATH isn't necessary, because .jar files can go in /Library/Java/Extensions
-
+export NODE_PATH="/usr/local/lib/node_modules"
 
 
 # python
