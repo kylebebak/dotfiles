@@ -104,8 +104,8 @@ function ghp(){
   _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }
 
-# pick a branch, compare files with current branch, then compare one of these files
-function gdb(){
+# pick a branch, compare files with current branch, then compare one of these files. this function only works from the root directory of the repo
+function gdbp(){
   branch=$(git branch -a | pick | xargs)
   git diff $branch --name-only | pick | xargs git diff $branch --
 }
