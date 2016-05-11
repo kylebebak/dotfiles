@@ -121,6 +121,14 @@ function ghp(){
   _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
 }
 
+# pick a past commit, pick a file that has changed since that commit, see the differences
+function ghpf(){
+  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
+  commit=$(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | pick | cut -d ' ' -f1)
+  gitfile=$(git diff --name-only ${commit} | pick)
+  git diff ${commit}:${gitfile} ${gitfile}
+}
+
 # pick a file that has changed since last commit
 alias gdp="git diff --name-only | pick | xargs git diff"
 
