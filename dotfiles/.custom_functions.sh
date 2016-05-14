@@ -61,6 +61,10 @@ function userbin(){
 }
 
 
+#-----------------------------------------------------------------
+# pick
+#-----------------------------------------------------------------
+
 # pipes the results of the first arg, list_cmd. then to pick. then to the second arg,
 # clean_cmd. then to xargs so they can be executed by the remaining arguments,
 # collectively called $exec_cmd. the first arg in exec_cmd can be an alias.
@@ -89,6 +93,10 @@ function _pick(){
 }
 
 
+# find a process ID and copy it to the clipboard
+alias psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
+
+
 # search history, filtering first with grep, then with pick
 function hist(){
   $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
@@ -96,7 +104,7 @@ function hist(){
 
 
 # git functions
-#-----------------------------------------------------------------
+#---------------------------------------------
 
 # helper to get the current branch
 function _current_branch(){
