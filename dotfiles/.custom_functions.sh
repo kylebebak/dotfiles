@@ -123,6 +123,14 @@ function gbp(){
   _pick "git branch -a" "cat" $*
 }
 
+# pick other, compare files with current, then pick one of these files
+function gbpf(){
+  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
+  other=$(_pick_branch)
+  git diff $other --name-only | pick | xargs git diff $other --
+}
+
+
 # SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
@@ -137,15 +145,6 @@ function ghpf(){
   git diff ${commit}:${gitfile} ${gitfile}
 }
 
-# pick a file that has changed since last commit
-alias gdp="git diff --name-only | pick | xargs git diff"
-
-# pick other, compare files with current, then pick one of these files
-function gbpf(){
-  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
-  other=$(_pick_branch)
-  git diff $other --name-only | pick | xargs git diff $other --
-}
 
 # find out how far ahead or behind `this` is compared with `other`
 function gbc(){
@@ -169,3 +168,7 @@ function gbca(){
   git log --stat ${other}..${this} && \
   git log --stat ${this}..${other}
 }
+
+
+# pick a file that has changed since last commit
+alias gdp="git diff --name-only | pick | xargs git diff"
