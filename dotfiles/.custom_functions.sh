@@ -141,7 +141,7 @@ function ghpf(){
 alias gdp="git diff --name-only | pick | xargs git diff"
 
 # pick other, compare files with current, then pick one of these files
-function gdbp(){
+function gbpf(){
   cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
   other=$(_pick_branch)
   git diff $other --name-only | pick | xargs git diff $other --
