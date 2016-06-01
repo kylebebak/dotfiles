@@ -116,25 +116,31 @@ function _pick_branch(){
   echo $(git branch -a | pick | sed 's/^\*//'| xargs echo)
 }
 
+# helper to print and execute command string
+function _echo_and_execute(){
+  echo $1
+  eval $1
+}
+
 
 # SYNOPSIS: pick a branch and do something with it
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
-  _pick "git branch -a" "cat" $*
+  _echo_and_execute "_pick \"git branch -a\" \"cat\" $*"
 }
 
 # pick other, compare files with current, then pick one of these files
 function gbpf(){
   cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
   other=$(_pick_branch)
-  git diff $other --name-only | pick | xargs git diff $other --
+  _echo_and_execute "git diff $other --name-only | pick | xargs git diff $other --"
 }
 
 
 # SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  _pick "git log --pretty=format:'%h %ad | %s%d [%an]' --date=short" "cut -d ' ' -f1" $*
+  _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short\" \"cut -d ' ' -f1\" $*"
 }
 
 # pick a past commit, pick a file that has changed since that commit, see the differences
@@ -142,7 +148,7 @@ function ghpf(){
   cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
   commit=$(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | pick | cut -d ' ' -f1)
   gitfile=$(git diff --name-only ${commit} | pick)
-  git diff ${commit}:${gitfile} ${gitfile}
+  _echo_and_execute "git diff ${commit}:${gitfile} ${gitfile}"
 }
 
 
@@ -154,7 +160,7 @@ function gbc(){
     this=$(_pick_branch)
   fi
   other=$(_pick_branch)
-  git rev-list --left-right --count ${this}...${other}
+  _echo_and_execute "git rev-list --left-right --count ${this}...${other}"
 }
 
 # see all commits on `this` that are not on `other`, and vice versa
@@ -165,8 +171,7 @@ function gbca(){
     this=$(_pick_branch)
   fi
   other=$(_pick_branch)
-  git log --stat ${other}..${this} && \
-  git log --stat ${this}..${other}
+  _echo_and_execute "git log --stat ${other}..${this} && git log --stat ${this}..${other}"
 }
 
 
