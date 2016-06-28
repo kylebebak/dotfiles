@@ -32,16 +32,6 @@ function _pick(){
 }
 
 
-# find a process ID and copy it to the clipboard
-alias psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
-
-
-# search history, filtering first with grep, then with pick
-function hist(){
-  $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
-}
-
-
 # git functions
 #---------------------------------------------
 
@@ -113,9 +103,18 @@ function gbca(){
   _echo_and_execute "git log --stat ${other}..${this} && git log --stat ${this}..${other}"
 }
 
+# pick a file that has changed since last commit
+alias gdp="git diff --name-only | pick | xargs git diff"
+
 
 # other functions
 #---------------------------------------------
 
-# pick a file that has changed since last commit
-alias gdp="git diff --name-only | pick | xargs git diff"
+# find a process ID and copy it to the clipboard
+alias psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
+
+
+# search history, filtering first with grep, then with pick
+function hist(){
+  $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
+}
