@@ -69,13 +69,14 @@ function gbpf(){
 # SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short\" \"cut -d ' ' -f1\" $*"
+  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
+  _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377'\" \"cut -d ' ' -f1\" $*"
 }
 
 # pick a past commit, pick a file that has changed since that commit, see the differences
 function ghpf(){
   cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
-  commit=$(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | pick | cut -d ' ' -f1)
+  commit=$(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
   gitfile=$(git diff --name-only ${commit} | pick)
   _echo_and_execute "git diff ${commit}:${gitfile} ${gitfile}"
 }

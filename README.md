@@ -18,7 +18,7 @@ This will symlink all of the dotfiles into your home directory.
 I wrote an [Ansible role](https://github.com/kylebebak/ansible-tmux) for deploying a tricked out version of `tmux` to Linux boxes running Ubuntu. It's worth a look.
 
 
-## Custom functions
+## Helpers
 
 The most interesting ones use [pick](https://github.com/thoughtbot/pick) to create `git` utilify functions that leverage fuzzy select.
 

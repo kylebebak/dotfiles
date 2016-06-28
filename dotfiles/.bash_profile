@@ -164,7 +164,6 @@ stty -ixon
 
 
 #-----------------------------------------------------------------
-# custom shell functions
+# helper functions
 #-----------------------------------------------------------------
-source ~/.helpers.sh
-source ~/.pick_helpers.sh
+for f in ~/.helpers/*; do source $f; done
