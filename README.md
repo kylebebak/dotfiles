@@ -23,13 +23,13 @@ I wrote an [Ansible role](https://github.com/kylebebak/ansible-tmux) for deployi
 The most interesting ones use [pick](https://github.com/thoughtbot/pick) to create `git` utilify functions that leverage fuzzy select.
 
 
-`gbp <command>`: Pick a branch and pass it to `command` (`gbp git checkout`, `gbp git merge`, ...)
+`gbp [command]`: Pick a branch and pass it to `command` (`gbp git checkout`, `gbp git merge`, etc). If command is not passed, pick and copy branch name
 `gbpf`: Pick a branch, pick a modified file from this branch, and diff it
 
-`ghp <command>`: Pick a past commit and pass it to `command`
+`ghp [command]`: Pick a past commit and pass it to `command`. If command is not passed, pick and copy commit hash
 `ghpf`: Pick a past commit, pick a modified file from this commit, and diff it
 
-`gbc <optional_arg>`: Pick a branch and find out how far ahead or behind (number of commits) it is compared with current branch. If __any__ optional_arg is passed, pick both branches
-`gbca <optional_arg>`: Like `gbc`, but shows names and hashes of commits
+`gbc [arg]`: Pick a branch and find out how far ahead or behind (number of commits) it is compared with current branch. If __any__ `arg` is passed, pick both branches
+`gbca [arg]`: Like `gbc`, but shows names and hashes of commits
 
 `gdp`: Pick a file that has been modified since the last commit, and diff it
