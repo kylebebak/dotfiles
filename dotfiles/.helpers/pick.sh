@@ -31,6 +31,12 @@ function _pick(){
   fi
 }
 
+# helper to print and execute command string
+function _echo_and_execute(){
+  echo $1
+  eval $1
+}
+
 
 # git functions
 #---------------------------------------------
@@ -45,16 +51,17 @@ function _pick_branch(){
   echo $(git branch -a | pick | sed 's/^\*//'| xargs echo)
 }
 
-# helper to print and execute command string
-function _echo_and_execute(){
-  echo $1
-  eval $1
+# helper to pick a commit hash
+function _pick_commit(){
+  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
+  echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
 }
 
 
 # SYNOPSIS: pick a branch and do something with it
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
+  if [ $# -eq 0 ]; then echo $(_pick_branch) | tr -d '\n' | pbcopy; return; fi
   _echo_and_execute "_pick \"git branch -a\" \"cat\" $*"
 }
 
@@ -69,14 +76,14 @@ function gbpf(){
 # SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
+  if [ $# -eq 0 ]; then echo $(_pick_commit) | tr -d '\n' | pbcopy; return; fi
   _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377'\" \"cut -d ' ' -f1\" $*"
 }
 
 # pick a past commit, pick a file that has changed since that commit, see the differences
 function ghpf(){
   cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
-  commit=$(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  commit=$(_pick_commit)
   gitfile=$(git diff --name-only ${commit} | pick)
   _echo_and_execute "git diff ${commit}:${gitfile} ${gitfile}"
 }
