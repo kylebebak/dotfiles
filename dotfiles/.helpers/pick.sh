@@ -61,7 +61,7 @@ function _pick_commit(){
 # SYNOPSIS: pick a branch and do something with it
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
-  if [ $# -eq 0 ]; then echo $(_pick_branch) | tr -d '\n' | pbcopy; return; fi
+  if [ $# -eq 0 ]; then echo -n $(_pick_branch) | pbcopy; return; fi
   _echo_and_execute "_pick \"git branch -a\" \"cat\" $*"
 }
 
@@ -76,7 +76,7 @@ function gbpf(){
 # SYNOPSIS: pick a past commit on this branch and do something with it
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  if [ $# -eq 0 ]; then echo $(_pick_commit) | tr -d '\n' | pbcopy; return; fi
+  if [ $# -eq 0 ]; then echo -n $(_pick_commit) | pbcopy; return; fi
   _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377'\" \"cut -d ' ' -f1\" $*"
 }
 
