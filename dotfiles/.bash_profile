@@ -166,4 +166,5 @@ stty -ixon
 #-----------------------------------------------------------------
 # custom shell functions
 #-----------------------------------------------------------------
-source ~/.custom_functions.sh
+source ~/.helpers.sh
+source ~/.pick_helpers.sh
