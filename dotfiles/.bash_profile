@@ -74,7 +74,7 @@ alias gsed='gsed -r'
 alias ports='lsof -nP | grep -i listen'
 alias process='ps -ef | grep -i'
 
-alias ff='find . 2>/dev/null | ggrep -E'
+alias ff='find . 2>/dev/null | ggrep -i -E'
 
 alias ll='ls -lAh'
 
