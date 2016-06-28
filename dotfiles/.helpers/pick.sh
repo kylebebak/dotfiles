@@ -2,34 +2,6 @@
 # pick
 #-----------------------------------------------------------------
 
-# helper pipes the results of the first arg, list_cmd, to pick. the output gets
-# piped to the second arg, clean_cmd. the output gets piped to xargs and is
-# executed by the remaining arguments, collectively called $exec_cmd. the first
-# arg in exec_cmd can be an alias.
-#
-# this function can be used to build other functions that fix any of the three args
-# to create utility functions or aliases
-function _pick(){
-  if [ $# -lt 3 ]; then
-    echo "you must pass a list_cmd, and clean_cmd, and an exec_cmd to this function"
-    return
-  fi
-
-  list_cmd="$1"
-  shift
-  clean_cmd="$1"
-  shift
-
-  # check if first arg after list_cmd is alias
-  alias $1 &>/dev/null
-  if [ $? -ne 0 ]; then
-    eval "$list_cmd | pick | $clean_cmd | xargs $*"
-  else
-    exec_cmd=$(alias $1 | cut -d "=" -f 2 | tr -d "'")
-    shift # remove alias, which was expanded and assigned to $exec_cmd
-    eval "$list_cmd | pick | $clean_cmd | xargs $exec_cmd $*"
-  fi
-}
 
 # helper to print and execute command string
 function _echo_and_execute(){
@@ -58,11 +30,12 @@ function _pick_commit(){
 }
 
 
-# SYNOPSIS: pick a branch and do something with it
+# SYNOPSIS: pick a branch and do something with it, or copy the branch name
 # USAGE: gbp go, gbp git merge, gbp gd --name-only, ...
 function gbp(){
-  if [ $# -eq 0 ]; then echo -n $(_pick_branch) | pbcopy; return; fi
-  _echo_and_execute "_pick \"git branch -a\" \"cat\" $*"
+  branch=$(_pick_branch)
+  if [ $# -eq 0 ]; then echo -n $branch | pbcopy; return; fi
+  _echo_and_execute "$* $branch"
 }
 
 # pick other, compare files with current, then pick one of these files
@@ -73,11 +46,12 @@ function gbpf(){
 }
 
 
-# SYNOPSIS: pick a past commit on this branch and do something with it
+# SYNOPSIS: pick a past commit on this branch and do something with it, or copy the commit hash
 # USAGE: ghp go, ghp gd --name-only, ...
 function ghp(){
-  if [ $# -eq 0 ]; then echo -n $(_pick_commit) | pbcopy; return; fi
-  _echo_and_execute "_pick \"git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377'\" \"cut -d ' ' -f1\" $*"
+  commit=$(_pick_commit)
+  if [ $# -eq 0 ]; then echo -n $commit | pbcopy; return; fi
+  _echo_and_execute "$* $commit"
 }
 
 # pick a past commit, pick a file that has changed since that commit, see the differences
