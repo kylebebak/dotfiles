@@ -17,7 +17,7 @@ module.exports = {
             "unix"
         ],
         "semi": [
-            1,
+            0,
             "always"
         ],
         "comma-dangle": [
