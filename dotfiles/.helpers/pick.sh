@@ -110,7 +110,7 @@ alias psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
 
 # search history, filtering first with grep, then with pick
 function hist(){
-  $(history | tail -r | grep -E $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
+  $(history | tail -r | grep -iE $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
 }
 
 
