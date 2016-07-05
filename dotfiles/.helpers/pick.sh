@@ -26,11 +26,11 @@ function _pick__pick_branch(){
 # helper to pick a commit hash
 function _pick__pick_commit(){
   # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
-  echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short "$@" | tr -d '\200-\377' | pick | cut -d ' ' -f1)
 }
 
 
-# SYNOPSIS: pick a branch and pass it to `command`, or copy the branch name
+# pick a branch and pass it to `command`, or copy the branch name
 # USAGE: gbp [command]
 function gbp(){
   branch=$(_pick__pick_branch)
@@ -53,7 +53,7 @@ function gbpf(){
 }
 
 
-# SYNOPSIS: pick a commit and pass it to `command`, or copy the commit hash
+# pick a commit and pass it to `command`, or copy the commit hash
 # USAGE: ghp [command]
 function ghp(){
   commit=$(_pick__pick_commit)
@@ -98,6 +98,23 @@ function gbca(){
   fi
   other=$(_pick__pick_branch)
   _pick__echo_and_execute "git log --stat ${other}..${this} && git log --stat ${this}..${other}"
+}
+
+
+# pick any file from index, then find all commits for this file. [-c]opy file path, or pick a commit and diff or [-s]how file
+# USAGE: gpf [-c] [-s]
+function gpf() {
+  cd $(git rev-parse --show-toplevel)
+  gitfile=$(git ls-tree -r master --name-only | pick)
+
+  if [[ "$@" == *"-c"* ]]; then echo -n $gitfile | pbcopy; return; fi
+
+  commit=$(_pick__pick_commit --follow -- ${gitfile})
+  if [[ "$@" == *"-s"* ]]; then
+    _pick__echo_and_execute "git show ${commit}:${gitfile}"
+  else
+    _pick__echo_and_execute "git diff ${commit}:${gitfile} ${gitfile}"
+  fi
 }
 
 

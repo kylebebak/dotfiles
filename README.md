@@ -31,3 +31,5 @@ The most interesting ones use [pick](https://github.com/thoughtbot/pick) to crea
 
 - `gbc [-b]`: Pick a branch and find out how far ahead or behind (number of commits) it is compared with current branch. If `-b` is passed, pick both branches.
 - `gbca [-b]`: Like `gbc`, but shows names and hashes of commits.
+
+- `gpf [-c] [-s]`: Pick any file from index, then find all commits for this file. [-c]opy file path, or pick a commit and diff or [-s]how file.
