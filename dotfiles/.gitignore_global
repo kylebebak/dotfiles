@@ -70,3 +70,12 @@ node_modules/
 ######################
 *transpiled.*
 *bundle.*
+
+# Project Specific Notes
+######################
+.*.md
+
+# ctags
+######################
+.tags
+.tags_sorted_by_file
