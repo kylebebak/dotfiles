@@ -29,6 +29,21 @@ function _pick__pick_commit(){
   echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short "$@" | tr -d '\200-\377' | pick | cut -d ' ' -f1)
 }
 
+# helper to pick a commit hash from the reflog
+function _pick__pick_commit_reflog(){
+  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
+  echo $(git reflog --all --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+}
+
+# helper to pick a file from the index
+function _pick__pick_file(){
+  echo $(git ls-tree -r master --name-only | pick)
+}
+
+function _pick__repository_root(){
+  echo $(git rev-parse --show-toplevel)
+}
+
 
 # pick a branch and pass it to `command`, or copy the branch name
 # USAGE: gbp [command]
@@ -41,9 +56,9 @@ function _pick__gbp(){
 # pick a branch, compare files with current state of working directory, pick one of these files and diff or show it
 # USAGE: gbpf [-s]
 function _pick__gbpf(){
-  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
+  cd $(_pick__repository_root) # cd into root of repo, otherwise git diff for file won't work
   other=$(_pick__pick_branch)
-  gitfile=$(git diff $other --name-only | pick)
+  gitfile=$(git diff --name-only $other | pick)
   echo -n $gitfile | pbcopy # copy filename
 
   if [[ "$@" == *"-s"* ]]; then
@@ -65,7 +80,7 @@ function _pick__ghp(){
 # pick a commit, compare files with current state of working directory, pick one of these files and diff or show it
 # USAGE: ghpf [-s]
 function _pick__ghpf(){
-  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
+  cd $(_pick__repository_root) # cd into root of repo, otherwise git diff for file won't work
   commit=$(_pick__pick_commit)
   gitfile=$(git diff --name-only ${commit} | pick)
   echo -n $gitfile | pbcopy # copy filename
@@ -81,7 +96,7 @@ function _pick__ghpf(){
 # pick a commit from the reflog and pass it to `command`, or copy the commit hash.
 # USAGE: grp [command]
 function _pick__grp(){
-  commit=$(git reflog --all --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  commit=$(_pick__pick_commit_reflog)
   if [ $# -eq 0 ]; then echo -n $commit | pbcopy; return; fi
   _pick__echo_and_execute "$* $commit"
 }
@@ -89,8 +104,8 @@ function _pick__grp(){
 # pick a commit from the reflog, compare files with current state of working directory, pick one of these files and diff or show it
 # USAGE: ghpf [-s]
 function _pick__grpf(){
-  cd $(git rev-parse --show-toplevel) # cd into root of repo, otherwise git diff for file won't work
-  commit=$(git reflog --all --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  cd $(_pick__repository_root) # cd into root of repo, otherwise git diff for file won't work
+  commit=$(_pick__pick_commit_reflog)
   gitfile=$(git diff --name-only ${commit} | pick)
   echo -n $gitfile | pbcopy # copy filename
 
@@ -130,8 +145,8 @@ function _pick__gbca(){
 # pick any file from index, then find all commits for this file. pick a commit and diff file against HEAD or [-s]how file
 # USAGE: gpf [-s]
 function _pick__gpf() {
-  cd $(git rev-parse --show-toplevel)
-  gitfile=$(git ls-tree -r master --name-only | pick)
+  cd $(_pick__repository_root)
+  gitfile=$(_pick__pick_file)
   echo -n $gitfile | pbcopy # copy filename
 
   commit=$(_pick__pick_commit --follow -- ${gitfile})
