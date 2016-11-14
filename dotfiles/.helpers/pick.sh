@@ -13,6 +13,11 @@ function _pick__echo_and_execute(){
 # git functions
 #---------------------------------------------
 
+# helper to get full path to repo root
+function _pick__repository_root(){
+  echo $(git rev-parse --show-toplevel)
+}
+
 # helper to get the current branch
 function _pick__current_branch(){
   echo $(git rev-parse --abbrev-ref HEAD)
@@ -25,23 +30,17 @@ function _pick__pick_branch(){
 
 # helper to pick a commit hash
 function _pick__pick_commit(){
-  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
-  echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short "$@" | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  echo $(git log --pretty=format:'%h %ad | %s%d [%an]' --date=short "$@" | pick | cut -d ' ' -f1)
 }
 
 # helper to pick a commit hash from the reflog
 function _pick__pick_commit_reflog(){
-  # `tr -d` to remove non-ascii chars, these chars cause strange bug with multi-line pick output
-  echo $(git reflog --all --date=short | tr -d '\200-\377' | pick | cut -d ' ' -f1)
+  echo $(git reflog --all --date=short | pick | cut -d ' ' -f1)
 }
 
 # helper to pick a file from the index
 function _pick__pick_file(){
   echo $(git ls-tree -r master --name-only | pick)
-}
-
-function _pick__repository_root(){
-  echo $(git rev-parse --show-toplevel)
 }
 
 
@@ -174,16 +173,21 @@ function _pick__hist(){
 # aliases
 #---------------------------------------------
 
-alias gbp="_pick__gbp"
-alias gbpf="_pick__gbpf"
-alias ghp="_pick__ghp"
-alias ghpf="_pick__ghpf"
-alias grp="_pick__grp"
-alias grpf="_pick__grpf"
-alias gbc="_pick__gbc"
-alias gbca="_pick__gbca"
-alias gpf="_pick__gpf"
+# all of the git functions in this file are now provided by `pick-git`, https://github.com/kylebebak/pick-git
+alias gbp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch"
+alias ghp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit"
+alias grp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog"
+alias gfp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file"
+
+alias gbpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_file"
+alias ghpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_file"
+alias grpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog_file"
+alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file_commit"
+
+alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_compare"
+
 
 alias psp="_pick__psp"
 alias hist="_pick__hist"
 
+alias cdp='cd $(find . -type d | pick)'

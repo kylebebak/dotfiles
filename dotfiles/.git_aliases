@@ -1,0 +1,7 @@
+alias gb='git branch'
+alias go='git checkout'
+alias gc='git commit'
+alias gm='git merge'
+alias gd='git diff'
+alias ga='git add'
+alias gr='git reset'

@@ -112,6 +112,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
+alias gm='git merge'
 alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias go='git checkout'
 alias gk='gitk --all&'
@@ -140,11 +141,6 @@ alias redis='redis-server /usr/local/etc/redis.conf'
   #----------------------------------------
 alias dm='docker-machine'
 alias dk='docker'
-
-  #----------------------------------------
-  # pick
-  #----------------------------------------
-alias cdp='cd $(find . -type d | pick)'
 
 
 #-----------------------------------------------------------------
