@@ -120,6 +120,7 @@ alias gx='gitx --all'
 alias grs='git remote show origin'
 alias gall='git add -u :/ && git add .'
 alias gpp='git push origin HEAD'
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 
   #----------------------------------------

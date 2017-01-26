@@ -169,6 +169,15 @@ function _pick__hist(){
   $(history | tail -r | grep -iE $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
 }
 
+function _yank__hist(){
+  if [[ -z "$1" ]]; then
+    num_lines=10
+  else
+    num_lines=$1
+  fi
+  $(history | tail "-$num_lines" -r | yank)
+}
+
 
 # aliases
 #---------------------------------------------
@@ -189,5 +198,6 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 
 alias psp="_pick__psp"
 alias hist="_pick__hist"
+alias yh="_yank__hist"
 
 alias cdp='cd $(find . -type d | pick)'
