@@ -175,7 +175,7 @@ function _yank__hist(){
   else
     num_lines=$1
   fi
-  $(history | tail "-$num_lines" -r | yank)
+  history | tail "-$num_lines" -r | yank
 }
 
 
