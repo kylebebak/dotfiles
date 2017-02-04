@@ -1,6 +1,9 @@
 # Dotfiles
 
-My dotfiles. The ones worth looking at are `.tmux.conf`, `.bash_profile` and the ones in `.helpers`.
+My dotfiles. The ones worth looking at are `.tmux.conf`, `.bash_profile` and the ones in `.helpers` / `.zshhelpers`.
+
+ZLE, the __zsh line editor__, is very cool, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it. If you use `zsh` it's worth a read.
+
 
 ## Local
 

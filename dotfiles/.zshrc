@@ -90,6 +90,8 @@ source $ZSH/oh-my-zsh.sh
 setopt extended_glob
 setopt inc_append_history
 
+for f in ~/.zshhelpers/*; do source $f; done
+
 # source .bash_profile after sourcing all other config files
 source ~/.bash_profile
 
