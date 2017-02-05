@@ -16,12 +16,16 @@ bindkey '\ep' copy-kill-whole-line
 
 bindkey '\e^[[A' select-a-word
 
-# widget for copying and killing region
-function copy-kill-region {
-  zle kill-region
-  echo -n $CUTBUFFER | pbcopy
-  zle yank
+# widget for selecting a region, or copying and killing the selected region
+function select-copy-kill-region {
+  if [ "$REGION_ACTIVE" -eq "0" ]; then
+    zle select-a-word
+  else
+    zle kill-region
+    echo -n $CUTBUFFER | pbcopy
+    zle yank
+  fi
 }
-zle -N copy-kill-region
+zle -N select-copy-kill-region
 
-bindkey '\e^[[B' copy-kill-region
+bindkey '\e^[[B' select-copy-kill-region
