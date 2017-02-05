@@ -11,3 +11,18 @@ zle -N copy-kill-whole-line
 
 # `^` for `ctrl` and `\e` for `alt`
 bindkey '^p' copy-kill-whole-line
+bindkey '\ep' copy-kill-whole-line
+
+
+bindkey '\e^[[A' select-a-word
+
+# widget for copying killing region
+function copy-kill-region {
+  echo -n $region
+  zle kill-region
+  echo -n $CUTBUFFER | pbcopy
+  zle yank
+}
+zle -N copy-kill-region
+
+bindkey '\e^[[B' copy-kill-region
