@@ -16,9 +16,8 @@ bindkey '\ep' copy-kill-whole-line
 
 bindkey '\e^[[A' select-a-word
 
-# widget for copying killing region
+# widget for copying and killing region
 function copy-kill-region {
-  echo -n $region
   zle kill-region
   echo -n $CUTBUFFER | pbcopy
   zle yank
