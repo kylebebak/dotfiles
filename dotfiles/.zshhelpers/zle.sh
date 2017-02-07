@@ -3,6 +3,11 @@
 
 # `^` for `ctrl` and `\e` for `alt`
 
+# http://stackoverflow.com/questions/7767702/what-is-terminal-escape-sequence-for-ctrl-arrow-left-right-in-term-linu
+# in iterm: Preferences > Profiles > Keys
+# choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;9C
+# escape sequence is caught here caught and invokes a widget
+
 
 # widget for killing line, and piping it from the kill ring to pbcopy
 function copy-kill-whole-line {
@@ -12,6 +17,7 @@ function copy-kill-whole-line {
 zle -N copy-kill-whole-line
 
 bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
+bindkey '^[[1;9C' copy-kill-whole-line # `ctrl + up_arrow`
 
 
 # widget for selecting a region, or copying and killing the selected region
@@ -27,3 +33,4 @@ function select-copy-kill-region {
 zle -N select-copy-kill-region
 
 bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
+bindkey '^[[1;9D' select-copy-kill-region # `ctrl + down_arrow`
