@@ -184,6 +184,7 @@ function _yank__hist(){
 
 # all of the git functions in this file are now provided by `pick-git`, https://github.com/kylebebak/pick-git
 alias gbp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch"
+alias gtp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function tag"
 alias ghp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit"
 alias grp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog"
 alias gfp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file"
