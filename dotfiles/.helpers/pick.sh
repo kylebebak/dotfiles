@@ -169,13 +169,26 @@ function _pick__hist(){
   $(history | tail -r | grep -iE $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
 }
 
-function _yank__hist(){
+
+function _yank__recent_hist(){
   if [[ -z "$1" ]]; then
     num_lines=10
   else
     num_lines=$1
   fi
   history | tail "-$num_lines" -r | yank
+}
+
+function _pick__recent_hist(){
+  if [[ -z "$1" ]]; then
+    num_lines=20
+  else
+    num_lines=$1
+  fi
+  # get everything but first column, use xargs to trim whitespace
+  command=$(history | tail "-$num_lines" -r | pick | awk '{$1=""; print $0}' | xargs)
+  # use `echo -n` to remove trailing newline char
+  echo -n "$command" | pbcopy
 }
 
 
@@ -199,6 +212,7 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 
 alias psp="_pick__psp"
 alias hist="_pick__hist"
-alias yh="_yank__hist"
+alias yh="_yank__recent_hist"
+alias ph="_pick__recent_hist"
 
 alias cdp='cd $(find . -type d | pick)'
