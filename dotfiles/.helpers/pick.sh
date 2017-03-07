@@ -216,3 +216,4 @@ alias yh="_yank__recent_hist"
 alias ph="_pick__recent_hist"
 
 alias cdp='cd $(find . -type d | pick)'
+alias pcp='pick | tr -d '\''\n'\'' | pbcopy' # pipe a list of options, smoke that pcp
