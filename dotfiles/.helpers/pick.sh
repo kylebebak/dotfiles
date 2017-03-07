@@ -165,8 +165,10 @@ alias _pick__psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
 
 
 # search history, filtering first with grep, then with pick
+# doesn't use xargs because xargs removes quotes from strings!
 function _pick__hist(){
-  $(history | tail -r | grep -iE $* | pick | xargs | cut -d ' ' -f 2- | xargs | tr -d '\n' | pbcopy)
+  command=$(history | tail -r | grep -iE $* | pick | cut -d ' ' -f 2- | awk '{$1=$1};1')
+  echo -n "$command" | pbcopy
 }
 
 
@@ -185,8 +187,8 @@ function _pick__recent_hist(){
   else
     num_lines=$1
   fi
-  # get everything but first column, use xargs to trim whitespace
-  command=$(history | tail "-$num_lines" -r | pick | awk '{$1=""; print $0}' | xargs)
+  # get everything but first column
+  command=$(history | tail "-$num_lines" -r | pick | cut -d ' ' -f 2- | awk '{$1=$1};1')
   # use `echo -n` to remove trailing newline char
   echo -n "$command" | pbcopy
 }
@@ -216,4 +218,4 @@ alias yh="_yank__recent_hist"
 alias ph="_pick__recent_hist"
 
 alias cdp='cd $(find . -type d | pick)'
-alias pcp='pick | tr -d '\''\n'\'' | pbcopy' # pipe a list of options, smoke that pcp
+alias pcp='pick | tr -d '\''\n'\'' | pbcopy' # pipe a list of options, pick one, remove trailing new line, smoke that pcp
