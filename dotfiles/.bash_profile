@@ -39,11 +39,17 @@ source /usr/local/opt/autoenv/activate.sh
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+
+# go, https://golang.org/doc/code.html
+export GOPATH=$HOME/Dropbox/Code/go
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$GOPATH/bin
+
 export PATH
+
 
 # android
 export ANDROID_HOME=/usr/local/opt/android-sdk
-
 
 
 #-----------------------------------------------------------------
@@ -114,7 +120,7 @@ alias gc='git commit'
 alias gd='git diff'
 alias gm='git merge'
 alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
-alias go='git checkout'
+alias gco='git checkout'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias grs='git remote show origin'
