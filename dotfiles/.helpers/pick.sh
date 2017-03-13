@@ -1,4 +1,12 @@
 #-----------------------------------------------------------------
+# useful one-liners
+#-----------------------------------------------------------------
+
+# awk '{$1=$1};1': delete BOTH leading and trailing whitespace from lines
+# cut -d ' ' -f 2-: remove first "word" from lines, assuming they have no leading whitespace
+
+
+#-----------------------------------------------------------------
 # pick
 #-----------------------------------------------------------------
 
@@ -167,7 +175,7 @@ alias _pick__psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
 # search history, filtering first with grep, then with pick
 # doesn't use xargs because xargs removes quotes from strings!
 function _pick__hist(){
-  command=$(history | tail -r | grep -iE $* | pick | cut -d ' ' -f 2- | awk '{$1=$1};1')
+  command=$(history | tail -r | grep -iE $* | pick | awk '{$1=$1};1' | cut -d ' ' -f 2-)
   echo -n "$command" | pbcopy
 }
 
@@ -188,7 +196,7 @@ function _pick__recent_hist(){
     num_lines=$1
   fi
   # get everything but first column
-  command=$(history | tail "-$num_lines" -r | pick | cut -d ' ' -f 2- | awk '{$1=$1};1')
+  command=$(history | tail "-$num_lines" -r | pick | awk '{$1=$1};1' | cut -d ' ' -f 2-)
   # use `echo -n` to remove trailing newline char
   echo -n "$command" | pbcopy
 }
