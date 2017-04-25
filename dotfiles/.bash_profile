@@ -85,13 +85,13 @@ alias ff='find . 2>/dev/null | ggrep -E'
 alias ll='ls -lAh'
 
 # copy path of working directory
-alias cpwd='printf `pwd` | pbcopy'
+alias cpwd='echo -n `pwd` | pbcopy'
 
 
   #----------------------------------------
   # shortcuts
   #----------------------------------------
-alias code='cd ~/Dropbox/Code'
+alias code='cd ~/Google\ Drive/Code'
 
 
   #----------------------------------------
