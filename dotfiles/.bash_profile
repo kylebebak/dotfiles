@@ -89,18 +89,10 @@ alias cpwd='echo -n `pwd` | pbcopy'
 
 
   #----------------------------------------
-  # shortcuts
-  #----------------------------------------
-alias code='cd ~/Google\ Drive/Code'
-
-
-  #----------------------------------------
   # app shortcuts
   #----------------------------------------
 alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
-
-
 
 
   #----------------------------------------
