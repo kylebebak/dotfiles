@@ -27,3 +27,8 @@ function mrm(){
     echo "`date -r ${tmst}`     `dirname ${filepath}`/${bold}`basename ${filepath}`${normal}"
   done
 }
+
+
+function copyhist(){
+  history | tail -$1 -r | pbcopy
+}
