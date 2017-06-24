@@ -54,3 +54,18 @@ The most interesting ones use [pick](https://github.com/thoughtbot/pick) to crea
 - `gbca [-b]`: Like `gbc`, but shows names and hashes of commits.
 
 - `gpf [-c] [-s]`: Pick any file from index, then find all commits for this file. [-c]opy file path, or pick a commit and diff or [-s]how file.
+
+
+## Node Modules
+~~~sh
+npm install -g markdown-html
+npm install -g react-native-cli
+npm install -g eslint
+npm install -g eslint-plugin-react
+npm install -g underscore-node
+npm install -g moment
+npm install -g json-server
+npm install -g faucet
+npm install -g babel-eslint
+npm install -g rnpm
+~~~

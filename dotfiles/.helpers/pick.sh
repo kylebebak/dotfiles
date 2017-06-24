@@ -179,7 +179,6 @@ function _pick__hist(){
   echo -n "$command" | pbcopy
 }
 
-
 function _yank__recent_hist(){
   if [[ -z "$1" ]]; then
     num_lines=10
@@ -221,6 +220,8 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 
 
 alias psp="_pick__psp"
+alias dp='docker ps | yank'
+
 alias hist="_pick__hist"
 alias yh="_yank__recent_hist"
 alias ph="_pick__recent_hist"

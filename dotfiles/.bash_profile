@@ -17,6 +17,9 @@ PATH="/usr/local/bin:${PATH}"
 # user bin, make sure this shows up before /usr/local/bin in $PATH
 PATH="${HOME}/.local/bin:${PATH}"
 
+# lse
+PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/other"
+
 
 # node
 
@@ -41,9 +44,12 @@ eval "$(rbenv init -)"
 
 
 # go, https://golang.org/doc/code.html
-export GOPATH=$HOME/Dropbox/Code/go
+export GOPATH=$HOME/GoogleDrive/Code/go
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
+
+# path to go executables in bright api repo
+PATH=$PATH:$HOME/Code/Bright/code/api/go/bin
 
 export PATH
 
@@ -77,7 +83,7 @@ alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 alias sed='sed -E'
 alias gsed='gsed -r'
 
-alias ports='lsof -nP | grep -i listen'
+alias ports='sudo lsof -nP | grep -i listen'
 alias process='ps -ef | grep -i'
 
 alias ff='find . 2>/dev/null | ggrep -E'
@@ -162,3 +168,18 @@ stty -ixon
 # helper functions
 #-----------------------------------------------------------------
 for f in ~/.helpers/*; do source $f; done
+for f in ~/.temp/*; do source $f; done
+
+
+#-----------------------------------------------------------------
+# docker functions and aliases
+#-----------------------------------------------------------------
+dockershell() {
+  docker exec -it $1 /bin/bash
+}
+
+
+#-----------------------------------------------------------------
+# autojump
+#-----------------------------------------------------------------
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
