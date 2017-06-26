@@ -1,7 +1,7 @@
 {
   "@python": "3.5",
   "linters": {
-    "pep8": {
+    "flake8": {
       "max-line-length": 100
     }
   }
