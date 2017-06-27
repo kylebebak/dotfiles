@@ -33,6 +33,10 @@ function _pick__recent_hist(){
   echo -n "$command" | pbcopy
 }
 
+function _pick__jump() {
+  cd "`pick-helpers --function jump $*`"
+}
+
 
 # aliases
 #---------------------------------------------
@@ -52,12 +56,13 @@ alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file_co
 alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_compare"
 
 
-alias psp="_pick__psp"
+alias psp='_pick__psp'
 alias dp='docker ps | yank'
 
-alias hist="_pick__hist"
-alias yh="_yank__recent_hist"
-alias ph="_pick__recent_hist"
+alias hist='_pick__hist'
+alias yh='_yank__recent_hist'
+alias ph='_pick__recent_hist'
 
 alias cdp='cd $(find . -type d | pick)'
 alias pcp='pick | tr -d '\''\n'\'' | pbcopy' # pipe a list of options, pick one, remove trailing new line, smoke that pcp
+alias jp='_pick__jump'

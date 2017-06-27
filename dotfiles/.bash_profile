@@ -19,6 +19,7 @@ PATH="${HOME}/.local/bin:${PATH}"
 
 # lse
 PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/other"
+PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/pick-helpers"
 
 
 # node
@@ -31,9 +32,6 @@ export NODE_PATH="/usr/local/lib/node_modules"
 # virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/local/bin/virtualenvwrapper.sh
-
-# autoenv
-source /usr/local/opt/autoenv/activate.sh
 
 
 # ruby
