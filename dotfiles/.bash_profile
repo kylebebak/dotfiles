@@ -18,7 +18,7 @@ PATH="/usr/local/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 # lse
-PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/other"
+PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/lse"
 PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/pick-helpers"
 
 
@@ -49,6 +49,9 @@ PATH=$PATH:$GOPATH/bin
 # path to go executables in bright api repo
 PATH=$PATH:$HOME/Code/Bright/code/api/go/bin
 
+
+# genymotion
+PATH="/Applications/Genymotion.app/Contents/MacOS/tools:$PATH"
 export PATH
 
 
@@ -85,6 +88,7 @@ alias ports='sudo lsof -nP | grep -i listen'
 alias process='ps -ef | grep -i'
 
 alias ff='find . 2>/dev/null | ggrep -E'
+alias fd='find . type -d 2>/dev/null -name'
 
 alias ll='ls -lAh'
 
@@ -163,13 +167,6 @@ stty -ixon
 
 
 #-----------------------------------------------------------------
-# helper functions
-#-----------------------------------------------------------------
-for f in ~/.helpers/*; do source $f; done
-for f in ~/.temp/*; do source $f; done
-
-
-#-----------------------------------------------------------------
 # docker functions and aliases
 #-----------------------------------------------------------------
 dockershell() {
@@ -181,3 +178,18 @@ dockershell() {
 # autojump
 #-----------------------------------------------------------------
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+
+#-----------------------------------------------------------------
+# js
+#-----------------------------------------------------------------
+alias eslint_local='node_modules/eslint/bin/eslint.js'
+
+
+#-----------------------------------------------------------------
+# helper functions
+#-----------------------------------------------------------------
+for f in ~/.helpers/*; do source $f; done
+if [ -d "$HOME/.ignore" ]; then
+  for f in ~/.ignore/*; do source $f; done
+fi

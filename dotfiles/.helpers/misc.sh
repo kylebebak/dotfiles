@@ -1,21 +1,3 @@
-function countdown(){
-   date1=$((`date +%s` + $1));
-   while [ "$date1" -ne `date +%s` ]; do
-     echo -ne "$(gdate -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
-     sleep 0.1
-   done
-}
-
-
-function count(){
-  date1=`date +%s`;
-   while true; do
-    echo -ne "$(gdate -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
-    sleep 0.1
-   done
-}
-
-
 # get N most recently modified files within current directory and all subdirectories
 function mrm(){
   bold=`tput bold`
