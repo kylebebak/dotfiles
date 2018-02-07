@@ -12,5 +12,9 @@ function mrm(){
 
 
 function copyhist(){
-  history | tail -$1 -r | pbcopy
+  history | tail -r | pbcopy
+}
+
+function dum() {
+  du -m $1 | sort -n | tail -n ${2:-10}
 }

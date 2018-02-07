@@ -1,5 +1,7 @@
 # in zsh, this is not sourced by default. instead, ~/.zshrc is sourced, so that file has a line which sources this one
 
+# pyenv
+eval "$(pyenv init -)"
 
 #-----------------------------------------------------------------
 # path environment variables
@@ -18,16 +20,17 @@ PATH="/usr/local/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 # lse
-PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/lse"
-PATH="${PATH}:${HOME}/GoogleDrive/Code/bin/pick-helpers"
+PATH="${PATH}:${HOME}/Code/bin/lse"
+PATH="${PATH}:${HOME}/Code/bin/pick-helpers"
+
+# python
+PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
 
 
 # node
 
 export NODE_PATH="/usr/local/lib/node_modules"
 
-
-# python
 
 # virtualenv
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -42,12 +45,12 @@ eval "$(rbenv init -)"
 
 
 # go, https://golang.org/doc/code.html
-export GOPATH=$HOME/GoogleDrive/Code/go
+# https://dmitri.shuralyov.com/blog/18
+GOPATH_0=$HOME/go
+GOPATH_1=$HOME/Code/go
+export GOPATH=$GOPATH_0:$GOPATH_1
 PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$GOPATH/bin
-
-# path to go executables in bright api repo
-PATH=$PATH:$HOME/Code/Bright/code/api/go/bin
+PATH=$PATH:$GOPATH_0/bin:$GOPATH_1/bin
 
 
 # genymotion
@@ -63,16 +66,16 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # ALIASES
 #-----------------------------------------------------------------
 
-  #----------------------------------------
-  # OSX
-  #----------------------------------------
+#----------------------------------------
+# OSX
+#----------------------------------------
 alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 
-  #----------------------------------------
-  # UNIX
-  #----------------------------------------
+#----------------------------------------
+# UNIX
+#----------------------------------------
 alias lf="ls -l | egrep -v '^d'"
 alias ldir="ls -l | egrep '^d'"
 
@@ -96,23 +99,22 @@ alias ll='ls -lAh'
 alias cpwd='echo -n `pwd` | pbcopy'
 
 
-  #----------------------------------------
-  # app shortcuts
-  #----------------------------------------
+#----------------------------------------
+# app shortcuts
+#----------------------------------------
 alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
 
-  #----------------------------------------
-  # shells and interpreters
-  #----------------------------------------
-
+#----------------------------------------
+# shells and interpreters
+#----------------------------------------
 alias ip='ipython --no-confirm-exit'
 
 
-  #----------------------------------------
-  # git
-  #----------------------------------------
+#----------------------------------------
+# git
+#----------------------------------------
 alias gs='git status'
 alias ga='git add'
 alias gb='git branch'
@@ -129,31 +131,23 @@ alias gpp='git push origin HEAD'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
 
-  #----------------------------------------
-  # tmux
-  #----------------------------------------
+#----------------------------------------
+# tmux
+#----------------------------------------
 alias tl='tmux ls'
 alias ta='tmux attach -t'
 alias tk='tmux kill-session -t'
 
 
-  #----------------------------------------
-  # redis
-  #----------------------------------------
+#----------------------------------------
+# redis
+#----------------------------------------
 alias redis='redis-server /usr/local/etc/redis.conf'
-
-
-  #----------------------------------------
-  # docker
-  #----------------------------------------
-alias dm='docker-machine'
-alias dk='docker'
 
 
 #-----------------------------------------------------------------
 # run custom startup scripts
 #-----------------------------------------------------------------
-
 # load notes init script for tab completions
 which notes >/dev/null && . "$( notes -i )"
 
@@ -161,17 +155,8 @@ which notes >/dev/null && . "$( notes -i )"
 #-----------------------------------------------------------------
 # custom shell options
 #-----------------------------------------------------------------
-
 # enables moving forward in reverse-i-search, ctrl+s
 stty -ixon
-
-
-#-----------------------------------------------------------------
-# docker functions and aliases
-#-----------------------------------------------------------------
-dockershell() {
-  docker exec -it $1 /bin/bash
-}
 
 
 #-----------------------------------------------------------------

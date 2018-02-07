@@ -57,7 +57,6 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 
 
 alias psp='_pick__psp'
-alias dp='docker ps | yank'
 
 alias hist='_pick__hist'
 alias yh='_yank__recent_hist'

@@ -62,10 +62,6 @@ bkp.*
 *.sublime-workspace
 *.autosave*
 
-# Node modules
-######################
-node_modules/
-
 # Generated files
 ######################
 *transpiled.*
