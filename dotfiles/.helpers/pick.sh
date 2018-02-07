@@ -7,12 +7,12 @@ alias _pick__psp="ps -ef | pick | awk '{print \$2}' | xargs echo -n | pbcopy"
 
 # search history, filtering first with grep, then with pick
 # doesn't use xargs because xargs removes quotes from strings!
-function _pick__hist(){
+function _pick__hist() {
   command=$(history | tail -r | grep -iE $* | pick | awk '{$1=$1};1' | cut -d ' ' -f 2-)
   echo -n "$command" | pbcopy
 }
 
-function _yank__recent_hist(){
+function _yank__recent_hist() {
   if [[ -z "$1" ]]; then
     num_lines=10
   else
@@ -21,7 +21,7 @@ function _yank__recent_hist(){
   history | tail "-$num_lines" -r | yank
 }
 
-function _pick__recent_hist(){
+function _pick__recent_hist() {
   if [[ -z "$1" ]]; then
     num_lines=20
   else

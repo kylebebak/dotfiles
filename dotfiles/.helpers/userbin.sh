@@ -2,7 +2,7 @@
 # working on `notes`, so that could quickly enable the dev version for
 # testing, and then disable it to avoid conflicts with the homebrew keg.
 # this depends on ${HOME}/bin coming before /usr/local/bin in $PATH
-function userbin(){
+function userbin() {
   bin="${HOME}/.local/bin"
 
   while test $# -gt 0; do
