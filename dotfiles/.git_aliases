@@ -1,5 +1,5 @@
 alias gb='git branch'
-alias go='git checkout'
+alias gco='git checkout'
 alias gc='git commit'
 alias gm='git merge'
 alias gd='git diff'

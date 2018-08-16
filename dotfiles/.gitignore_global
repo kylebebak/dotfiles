@@ -76,3 +76,6 @@ bkp.*
 ######################
 .tags
 .tags_sorted_by_file
+
+# mypy
+.mypy_cache

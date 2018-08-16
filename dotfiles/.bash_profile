@@ -1,8 +1,5 @@
 # in zsh, this is not sourced by default. instead, ~/.zshrc is sourced, so that file has a line which sources this one
 
-# pyenv
-eval "$(pyenv init -)"
-
 #-----------------------------------------------------------------
 # path environment variables
 #-----------------------------------------------------------------
@@ -21,6 +18,7 @@ PATH="${HOME}/.local/bin:${PATH}"
 
 # lse
 PATH="${PATH}:${HOME}/Code/bin/lse"
+PATH="${PATH}:${HOME}/Code/bin/math"
 PATH="${PATH}:${HOME}/Code/bin/pick-helpers"
 
 # python
@@ -32,11 +30,6 @@ PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
 export NODE_PATH="/usr/local/lib/node_modules"
 
 
-# virtualenv
-export WORKON_HOME="$HOME/.virtualenvs"
-source /usr/local/bin/virtualenvwrapper.sh
-
-
 # ruby
 
 # rbevn
@@ -46,11 +39,10 @@ eval "$(rbenv init -)"
 
 # go, https://golang.org/doc/code.html
 # https://dmitri.shuralyov.com/blog/18
-GOPATH_0=$HOME/go
-GOPATH_1=$HOME/Code/go
-export GOPATH=$GOPATH_0:$GOPATH_1
+GOPATH_0=$HOME/Code/go
+export GOPATH=$GOPATH_0
 PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$GOPATH_0/bin:$GOPATH_1/bin
+PATH=$PATH:$GOPATH_0/bin
 
 
 # genymotion

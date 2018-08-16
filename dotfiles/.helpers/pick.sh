@@ -12,13 +12,13 @@ function _pick__hist() {
   echo -n "$command" | pbcopy
 }
 
-function _yank__recent_hist() {
-  if [[ -z "$1" ]]; then
-    num_lines=10
-  else
-    num_lines=$1
-  fi
-  history | tail "-$num_lines" -r | yank
+function _pick__delete_hist() {
+  # first 14 chars gets leading unix timestamp
+  timestamp=$(tail -r $HISTFILE | pick | cut -c1-14)
+  # directly modify history file
+  sed -i "" "/${timestamp}/d" $HISTFILE
+  # re-read history file into memory
+  fc -R
 }
 
 function _pick__recent_hist() {
@@ -31,6 +31,15 @@ function _pick__recent_hist() {
   command=$(history | tail "-$num_lines" -r | pick | awk '{$1=$1};1' | cut -d ' ' -f 2-)
   # use `echo -n` to remove trailing newline char
   echo -n "$command" | pbcopy
+}
+
+function _yank__recent_hist() {
+  if [[ -z "$1" ]]; then
+    num_lines=20
+  else
+    num_lines=$1
+  fi
+  history | tail "-$num_lines" -r | yank
 }
 
 function _pick__jump() {
@@ -59,6 +68,7 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 alias psp='_pick__psp'
 
 alias hist='_pick__hist'
+alias dhist='_pick__delete_hist'
 alias yh='_yank__recent_hist'
 alias ph='_pick__recent_hist'
 
