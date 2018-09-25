@@ -26,15 +26,9 @@ PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
 
 
 # node
-
+PATH="/usr/local/opt/node@8/bin:$PATH"
+# probably time to switch to nvm...
 export NODE_PATH="/usr/local/lib/node_modules"
-
-
-# ruby
-
-# rbevn
-PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 
 # go, https://golang.org/doc/code.html
@@ -47,7 +41,20 @@ PATH=$PATH:$GOPATH_0/bin
 
 # genymotion
 PATH="/Applications/Genymotion.app/Contents/MacOS/tools:$PATH"
+
+
+# ruby
+
+# rbevn
+PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+PATH="$PATH:$HOME/.rvm/bin"
+
 export PATH
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
 # android
