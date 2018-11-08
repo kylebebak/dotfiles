@@ -27,8 +27,8 @@ PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
 
 # node
 PATH="$PATH:/usr/local/opt/node@8/bin"
-# probably time to switch to nvm...
 export NODE_PATH="/usr/local/lib/node_modules"
+# we can run nvm without having to load it on shell startup; check out dotfiles/.helpers/nvm.sh
 
 
 # go, https://golang.org/doc/code.html
