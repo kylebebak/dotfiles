@@ -26,7 +26,7 @@ PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
 
 
 # node
-PATH="/usr/local/opt/node@8/bin:$PATH"
+PATH="$PATH:/usr/local/opt/node@8/bin"
 # probably time to switch to nvm...
 export NODE_PATH="/usr/local/lib/node_modules"
 
