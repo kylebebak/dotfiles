@@ -20,4 +20,4 @@ function dum() {
 }
 
 # tar -zxvf Code.tar.gz
-alias archivecode='cd $HOME && tar -zcvf Code.tar.gz Code && mv Code.tar.gz GoogleDrive'
+alias archivecode='cd $HOME && tar --exclude "node_modules" -zcvf Code.tar.gz Code && mv Code.tar.gz GoogleDrive'

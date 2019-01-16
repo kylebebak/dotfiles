@@ -23,6 +23,7 @@ PATH="${PATH}:${HOME}/Code/bin/pick-helpers"
 
 # python
 PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
+PATH="${PATH}:${HOME}/Library/Python/3.6/bin"
 
 
 # node

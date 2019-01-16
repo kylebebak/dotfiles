@@ -4,6 +4,7 @@
 	smudge = git media smudge %f
 [core]
 	excludesfile = /Users/kylebebak/.gitignore_global
+	attributesfile = /Users/kylebebak/.gitattributes
 [push]
 	default = upstream
 [user]

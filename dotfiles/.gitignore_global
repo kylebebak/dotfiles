@@ -65,7 +65,6 @@ bkp.*
 # Generated files
 ######################
 *transpiled.*
-*bundle.*
 
 # Project Specific Notes
 ######################
