@@ -83,9 +83,6 @@ alias diff='diff -Bb'
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 
-alias sed='sed -E'
-alias gsed='gsed -r'
-
 alias ports='sudo lsof -nP | grep -i listen'
 alias process='ps -ef | grep -i'
 

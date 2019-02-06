@@ -16,7 +16,7 @@ function _pick__delete_hist() {
   # first 14 chars gets leading unix timestamp
   timestamp=$(tail -r $HISTFILE | pick | cut -c1-14)
   # directly modify history file
-  sed -i "" "/${timestamp}/d" $HISTFILE
+  gsed -i "/${timestamp}/d" $HISTFILE
   # re-read history file into memory
   fc -R
 }

@@ -78,3 +78,6 @@ bkp.*
 
 # mypy
 .mypy_cache
+
+# tern
+.tern-port

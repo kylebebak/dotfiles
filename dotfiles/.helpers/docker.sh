@@ -2,6 +2,7 @@
 # docker functions and aliases
 #-----------------------------------------------------------------
 alias dkp='docker ps | yank'
+alias dks='docker stop $(docker ps -aq)'
 alias dk='docker-compose'
 
 dksh() {
