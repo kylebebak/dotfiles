@@ -4,32 +4,23 @@
 # path environment variables
 #-----------------------------------------------------------------
 
-
 # postgres.app
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# shell
 
 # make sure /usr/local/bin occurs before /usr/bin in $PATH
 PATH="/usr/local/bin:${PATH}"
 
-# user bin, make sure this shows up before /usr/local/bin in $PATH
+# make sure this shows up before /usr/local/bin in $PATH
 PATH="${HOME}/.local/bin:${PATH}"
 
-# lse
+# my bin
 PATH="${PATH}:${HOME}/Code/bin/lse"
 PATH="${PATH}:${HOME}/Code/bin/math"
 PATH="${PATH}:${HOME}/Code/bin/pick-helpers"
 
-# python
-PATH="${PATH}:${HOME}/Library/Python/2.7/bin"
-PATH="${PATH}:${HOME}/Library/Python/3.6/bin"
-
-
 # node
 PATH="$PATH:/usr/local/opt/node@8/bin"
 # we can run nvm without having to load it on shell startup; check out dotfiles/.helpers/nvm.sh
-
 
 # go, https://golang.org/doc/code.html
 # https://dmitri.shuralyov.com/blog/18
@@ -38,21 +29,17 @@ export GOPATH=$GOPATH_0
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH_0/bin
 
-
-# genymotion
-PATH="/Applications/Genymotion.app/Contents/MacOS/tools:$PATH"
-
-
-# ruby
-
 # rbevn
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# add RVM to PATH for scripting, make sure this is the last PATH variable change
 PATH="$PATH:$HOME/.rvm/bin"
 
+# remove duplicates
+PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
 export PATH
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -64,12 +51,6 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 #-----------------------------------------------------------------
 # ALIASES
 #-----------------------------------------------------------------
-
-#----------------------------------------
-# OSX
-#----------------------------------------
-alias showfiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hidefiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 
 #----------------------------------------
@@ -165,6 +146,3 @@ stty -ixon
 # helper functions
 #-----------------------------------------------------------------
 for f in ~/.helpers/*; do source $f; done
-if [ -d "$HOME/.ignore" ]; then
-  for f in ~/.ignore/*; do source $f; done
-fi
