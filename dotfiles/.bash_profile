@@ -31,7 +31,7 @@ PATH=$PATH:$GOPATH_0/bin
 
 # rbevn
 PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # add RVM to PATH for scripting, make sure this is the last PATH variable change
 PATH="$PATH:$HOME/.rvm/bin"

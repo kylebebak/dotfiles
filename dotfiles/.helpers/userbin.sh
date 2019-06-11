@@ -1,4 +1,4 @@
-# Makes or removes link to <executable> in ~/.local/bin. I wrote this function when working on `notes`, so that I could quickly enable the dev version for testing, and then disable it to avoid conflicts with the homebrew keg. This depends on ${HOME}/.local/bin coming before /usr/local/bin in $PATH.
+# Makes or removes link to <executable> in ~/.local/bin. I wrote this function when working on `notes`, so that I could quickly enable the dev version for testing, and then disable it to avoid conflicts with the homebrew keg. This depends on ${HOME}/.local/bin coming before executable's directory in $PATH.
 
 function userbin() {
   bin="${HOME}/.local/bin"
