@@ -28,6 +28,7 @@ PATH=$PATH:$GOPATH/bin
 
 # python
 eval "$(pipenv --completion)"
+PATH="$HOME/.poetry/bin:$PATH"
 
 # ruby
 # PATH="$HOME/.rbenv/bin:$PATH"
@@ -69,7 +70,8 @@ alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
 alias ip='ipython --no-confirm-exit'
-alias p='pipenv'
+alias pe='pipenv'
+alias po='poetry'
 
 alias gs='git status'
 alias ga='git add'
