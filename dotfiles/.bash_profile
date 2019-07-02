@@ -71,7 +71,9 @@ alias sbl='open -a "Sublime Text"'
 
 alias ip='ipython --no-confirm-exit'
 alias pe='pipenv'
-alias po='poetry'
+alias poetry='python3 $HOME/.poetry/bin/poetry'
+alias po='python3 $HOME/.poetry/bin/poetry'
+alias pos='source $(dirname $(poetry run which python))/activate'
 
 alias gs='git status'
 alias ga='git add'
