@@ -25,7 +25,6 @@ PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
 
 # python
-eval "$(pipenv --completion)"
 eval "$(pyenv init -)"
 PATH="$HOME/.poetry/bin:$PATH"
 
@@ -66,10 +65,7 @@ alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
 alias ip='ipython --no-confirm-exit'
-alias pe='pipenv'
 alias poetry='python3 $HOME/.poetry/bin/poetry'
-alias po='python3 $HOME/.poetry/bin/poetry'
-alias pos='source $(dirname $(poetry run which python))/activate'
 
 alias gs='git status'
 alias ga='git add'
