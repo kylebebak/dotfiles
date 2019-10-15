@@ -49,7 +49,6 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git poetry)
 
-
 source $ZSH/oh-my-zsh.sh
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
@@ -63,3 +62,5 @@ for f in ~/.zshhelpers/*; do source $f; done
 
 # source .bash_profile after sourcing all other config files
 source ~/.bash_profile
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

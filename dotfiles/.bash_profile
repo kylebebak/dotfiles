@@ -11,9 +11,7 @@ PATH="/usr/local/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 # my bin
-PATH="${PATH}:${HOME}/Code/bin/lse"
-PATH="${PATH}:${HOME}/Code/bin/math"
-PATH="${PATH}:${HOME}/Code/bin/pick-helpers"
+PATH="${PATH}:${HOME}/Code/bin"
 
 # postgres.app
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
@@ -28,16 +26,14 @@ PATH=$PATH:$GOPATH/bin
 
 # python
 eval "$(pipenv --completion)"
+eval "$(pyenv init -)"
 PATH="$HOME/.poetry/bin:$PATH"
 
 # ruby
-# PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
-
 # add RVM to PATH for scripting, make sure this is the last PATH variable change
-# PATH="$PATH:$HOME/.rvm/bin"
+PATH="$PATH:$HOME/.rvm/bin"
 
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # remove duplicates
 PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
@@ -55,7 +51,7 @@ alias diff='diff -Bb'
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 
-alias ports='sudo lsof -nP | grep -i listen'
+alias ports='lsof -nP | grep -i listen'
 alias process='ps -ef | grep -i'
 
 alias ff='find . 2>/dev/null | ggrep -E'
