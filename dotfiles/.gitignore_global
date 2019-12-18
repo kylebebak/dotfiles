@@ -47,6 +47,7 @@ Thumbs.db
 ######################
 *.~
 bkp.*
+*.bkp/
 
 # Local #
 ######################
@@ -75,3 +76,6 @@ bkp.*
 .mypy_cache
 
 sandbox/*
+
+# Docker
+docker-compose.custom*

@@ -65,7 +65,6 @@ alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
 
 alias ip='ipython --no-confirm-exit'
-alias poetry='python3 $HOME/.poetry/bin/poetry'
 
 alias gs='git status'
 alias ga='git add'

@@ -8,6 +8,7 @@
 # choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;5A
 # escape sequence is caught here caught and invokes a widget
 
+# disable or alter conflicting hotkeys: System Preferences > Keyboard > Shortcuts
 
 # widget for killing line, and piping it from the kill ring to pbcopy
 function copy-kill-whole-line {
