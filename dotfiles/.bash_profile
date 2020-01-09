@@ -32,6 +32,9 @@ PATH="$HOME/.poetry/bin:$PATH"
 # add RVM to PATH for scripting, make sure this is the last PATH variable change
 PATH="$PATH:$HOME/.rvm/bin"
 
+# rust
+PATH="$HOME/.cargo/bin:$PATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # remove duplicates
