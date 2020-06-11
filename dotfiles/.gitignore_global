@@ -70,6 +70,7 @@ bkp.*
 # Project Specific Notes
 ######################
 .*.md
+.*.txt
 .*.todo
 
 # mypy

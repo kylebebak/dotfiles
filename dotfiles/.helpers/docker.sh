@@ -12,3 +12,14 @@ dksh() {
 dkash() {
   docker exec -it $1 /bin/ash
 }
+
+dkl() {
+  if [ -z "$1" ]; then
+    echo "No container supplied"
+    return 1
+  fi
+
+  outfile=${1}_container_logs.txt
+  docker logs $1 &> ~/Desktop/${outfile}
+  echo ~/Desktop/$outfile
+}
