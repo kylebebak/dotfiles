@@ -18,6 +18,8 @@ PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # node
 # we can run nvm without having to load it on shell startup; check out dotfiles/.helpers/nvm.sh
+# node installed with brew, `brew install node@12`
+PATH="/usr/local/opt/node@12/bin:$PATH"
 
 # go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
 export GOPATH=$HOME/Code/go
@@ -66,6 +68,7 @@ alias cpwd='echo -n `pwd` | pbcopy'
 
 alias chrome='open -a "Google Chrome"'
 alias sbl='open -a "Sublime Text"'
+alias vscode='open -a "Visual Studio Code"'
 
 alias ip='ipython --no-confirm-exit'
 
@@ -75,7 +78,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias gm='git merge'
-alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias gco='git checkout'
 alias gk='gitk --all&'
 alias gx='gitx --all'

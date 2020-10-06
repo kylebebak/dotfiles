@@ -65,4 +65,5 @@ source ~/.bash_profile
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# https://github.com/Canop/broot (A new way to see and navigate directory trees)
 source /Users/kylebebak/Library/Preferences/org.dystroy.broot/launcher/bash/br
