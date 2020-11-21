@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -58,12 +57,56 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-for f in ~/.zshhelpers/*; do source $f; done
-
-# source .bash_profile after sourcing all other config files
-source ~/.bash_profile
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # https://github.com/Canop/broot (A new way to see and navigate directory trees)
-source /Users/kylebebak/Library/Preferences/org.dystroy.broot/launcher/bash/br
+source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+####################
+# ZLE CONFIG
+####################
+
+# http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#index-bindkey
+
+# `^` for `ctrl` and `\e` for `alt`
+
+# http://stackoverflow.com/questions/7767702
+# in iterm: Preferences > Profiles > Keys
+# choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;5A
+# escape sequence is caught here caught and invokes a widget
+
+# disable or alter conflicting hotkeys: System Preferences > Keyboard > Shortcuts
+
+# widget for killing line, and piping it from the kill ring to pbcopy
+function copy-kill-whole-line {
+  zle kill-whole-line
+  echo -n $CUTBUFFER | pbcopy
+}
+zle -N copy-kill-whole-line
+
+bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
+bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
+
+
+# widget for selecting a region, or copying and killing the selected region
+function select-copy-kill-region {
+  if [ "$REGION_ACTIVE" -eq "0" ]; then
+    zle select-a-word
+  else
+    zle kill-region
+    echo -n $CUTBUFFER | pbcopy
+    zle yank
+  fi
+}
+zle -N select-copy-kill-region
+
+bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
+bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
+
+####################
+# END ZLE CONFIG
+####################
+
+# source .bash_profile after sourcing all other config files
+source ~/.bash_profile

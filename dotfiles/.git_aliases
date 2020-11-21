@@ -5,7 +5,7 @@ alias gm='git merge'
 alias gd='git diff'
 alias ga='git add'
 alias gr='git reset'
-alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 function gdi {
   git diff $@ -- . ':!node_modules' ':!go/pkg' ':!go/bin'

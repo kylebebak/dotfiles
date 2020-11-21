@@ -10,7 +10,6 @@ function mrm() {
   done
 }
 
-
 function copyhist() {
   history | tail -r | pbcopy
 }

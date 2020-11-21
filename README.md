@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles. The ones worth looking at are `.zshrc`, `.bash_profile`, and the helpers in `.helpers` / `.zshhelpers`. Honorable mention for `.tmux.conf`.
+My dotfiles. The ones worth looking at are `.zshrc`, `.bash_profile`, and the helpers in `.helpers`. Honorable mention for `.tmux.conf`.
 
 ## Local
 
@@ -8,6 +8,18 @@ To ensure the dotfiles are sourced correctly, clone this repo **into your home d
 
 ```sh
 cd $HOME && ln -s -f dotfiles/dotfiles/.* ./
+```
+
+Then, on OSX, for OSX-specific dotfiles:
+
+```sh
+cd $HOME && ln -s -f dotfiles/osx/.* ./
+```
+
+Or on Linux, for Linux-specific dotfiles:
+
+```sh
+cd $HOME && ln -s -f dotfiles/linux/.* ./
 ```
 
 This will symlink all of the dotfiles into your home directory.
@@ -35,7 +47,7 @@ Or:
 
 If one of these combinations doesn't send anything, you can use always use iTerm2 to have it send any escape sequence you like. Go to **Preferences > Profiles > Keys**, choose a key combo, and instruct it to **Send Escape Sequence**.
 
-Then you can edit your `.zshrc` file to catch this escape sequence, and have it invoke a widget. Check out how I've done this in `/dotfiles/.zshhelpers/zle.sh`.
+Then you can edit your `.zshrc` file to catch this escape sequence, and have it invoke a widget.
 
 ## Helpers
 

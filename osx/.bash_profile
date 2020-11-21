@@ -17,7 +17,7 @@ PATH="${PATH}:${HOME}/Code/bin"
 PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # node
-# we can run nvm without having to load it on shell startup; check out dotfiles/.helpers/nvm.sh
+# we can run nvm without having to load it on shell startup; check out osx/.helpers/nvm.sh
 # node installed with brew, `brew install node@12`
 PATH="/usr/local/opt/node@12/bin:$PATH"
 
@@ -78,7 +78,7 @@ alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
 alias gm='git merge'
-alias glog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias gco='git checkout'
 alias gk='gitk --all&'
 alias gx='gitx --all'
