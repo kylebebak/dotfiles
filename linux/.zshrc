@@ -118,6 +118,8 @@ source ~/.git_aliases
 
 alias yank="yank-cli -- xsel -b"
 
+alias ta="tmux attach-session -t"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
