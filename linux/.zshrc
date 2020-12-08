@@ -138,6 +138,12 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
+# Docker
+alias dkp='docker ps | yank'
+dksh() {
+  docker exec -it $1 bash
+}
+
 ####################
 # ZLE CONFIG
 ####################
