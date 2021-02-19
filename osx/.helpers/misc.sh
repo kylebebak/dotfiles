@@ -24,3 +24,12 @@ function port() {
 
 # tar -zxvf Code.tar.gz
 alias archivecode='cd $HOME && tar --exclude "node_modules" -zcvf Code.tar.gz Code && mv Code.tar.gz GoogleDrive'
+
+function churn() {
+  git log --format=format: --name-only --since=6.month \
+ | egrep -v '^$' \
+ | sort \
+ | uniq -c \
+ | sort -nr \
+ | head -30
+}
