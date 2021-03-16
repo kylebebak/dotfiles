@@ -88,6 +88,7 @@ alias gpp='git push origin HEAD'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
 alias tl='tmux ls'
+alias tn='tmux new -s'
 alias ta='tmux attach -t'
 alias tk='tmux kill-session -t'
 
