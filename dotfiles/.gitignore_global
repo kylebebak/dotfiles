@@ -49,10 +49,6 @@ Thumbs.db
 bkp.*
 *.bkp/
 
-# Local #
-######################
-*.local*
-
 # Ruby bundler config directory
 ######################
 .bundle/
