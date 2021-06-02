@@ -161,3 +161,6 @@ bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up`
 ####################
 # END ZLE CONFIG
 ####################
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

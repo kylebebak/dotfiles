@@ -110,3 +110,6 @@ bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
 
 # source .bash_profile after sourcing all other config files
 source ~/.bash_profile
+
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

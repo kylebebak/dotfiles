@@ -9,10 +9,6 @@ dksh() {
   docker exec -it $1 /bin/bash
 }
 
-dkash() {
-  docker exec -it $1 /bin/ash
-}
-
 dkl() {
   if [ -z "$1" ]; then
     echo "No container supplied"
