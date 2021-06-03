@@ -51,4 +51,4 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 
 ## Helpers
 
-The most interesting ones use [pick](https://github.com/thoughtbot/pick) and [yank](https://github.com/mptre/yank) to create fuzzy select utility functions.
+The most interesting ones use [fzf](https://github.com/junegunn/fzf) and [yank](https://github.com/mptre/yank) to create fuzzy select utility functions.
