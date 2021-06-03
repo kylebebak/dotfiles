@@ -18,10 +18,6 @@ function dum() {
   du -m $1 | sort -n | tail -n ${2:-10}
 }
 
-function port() {
-  lsof -i tcp:$1
-}
-
 # tar -zxvf Code.tar.gz
 alias archivecode='cd $HOME && tar --exclude "node_modules" -zcvf Code.tar.gz Code && mv Code.tar.gz GoogleDrive'
 

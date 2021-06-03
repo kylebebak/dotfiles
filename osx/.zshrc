@@ -91,7 +91,6 @@ zle -N copy-kill-whole-line
 bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
 bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
 
-
 # widget for selecting a region, or copying and killing the selected region
 function select-copy-kill-region {
   if [ "$REGION_ACTIVE" -eq "0" ]; then

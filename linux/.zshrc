@@ -101,19 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases
-alias ll='ls -alF'
-
-alias gbp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch"
-alias gtp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function tag"
-alias ghp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit"
-alias grp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog"
-alias gfp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file"
-alias gbpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_file"
-alias ghpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_file"
-alias grpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog_file"
-alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file_commit"
-alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_compare"
-
 source ~/.git_aliases
 
 alias yank="yank-cli -- xsel -b"
@@ -138,16 +125,6 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-function ff() {
-  find "${1:-.}" 2>/dev/null | fzf
-}
-
-# Docker
-alias dkp='docker ps | yank'
-dksh() {
-  docker exec -it $1 bash
-}
-
 ####################
 # ZLE CONFIG
 ####################
@@ -168,3 +145,5 @@ bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up`
 
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.helpers.sh
