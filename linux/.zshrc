@@ -138,6 +138,10 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
+function ff() {
+  find "${1:-.}" 2>/dev/null | fzf
+}
+
 # Docker
 alias dkp='docker ps | yank'
 dksh() {
