@@ -59,8 +59,11 @@ setopt hist_reduce_blanks
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# https://github.com/Canop/broot (A new way to see and navigate directory trees)
+# br: https://github.com/Canop/broot (A new way to see and navigate directory trees)
 source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+
+# fzf: https://github.com/junegunn/fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ####################
 # ZLE CONFIG
@@ -110,6 +113,3 @@ bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
 
 # source .bash_profile after sourcing all other config files
 source ~/.bash_profile
-
-# https://github.com/junegunn/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

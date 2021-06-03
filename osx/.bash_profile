@@ -53,13 +53,13 @@ alias ldir="ls -l | egrep '^d'"
 alias diff='diff -Bb'
 
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
-alias ggrep='ggrep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 
 alias ports='lsof -nP | grep -i listen'
-alias process='ps -ef | grep -i'
+alias process='ps -ef | fzf'
 
-alias ff='find . 2>/dev/null | ggrep -E'
-alias fd='find . type -d 2>/dev/null -name'
+function ff() {
+  find "${1:-.}" 2>/dev/null | fzf
+}
 
 alias ll='ls -lAh'
 
