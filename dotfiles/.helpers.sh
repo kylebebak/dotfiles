@@ -25,9 +25,7 @@ alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file_co
 
 alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_compare"
 
-function ff() {
-  find "${1:-.}" 2>/dev/null | fzf
-}
+alias fzfm='fzf --multi --bind ctrl-a:select-all --bind ctrl-s:deselect-all'
 
 #-----------------------------------------------------------------
 # other
