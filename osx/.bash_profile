@@ -26,6 +26,9 @@ export GOPATH=$HOME/Code/go
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
 
+# lua, https://www.lua.org/download.html
+PATH=$PATH:/usr/local/lua-5.4.3/src
+
 # python
 eval "$(pyenv init -)"
 PATH="$HOME/.poetry/bin:$PATH"
