@@ -3,10 +3,9 @@
 #-----------------------------------------------------------------
 alias dkp='docker ps | yank'
 alias dks='docker stop $(docker ps -aq)'
-alias dk='docker-compose'
 
 dksh() {
-  docker exec -it $1 /bin/bash
+  docker exec -it $1 bash
 }
 
 #-----------------------------------------------------------------
