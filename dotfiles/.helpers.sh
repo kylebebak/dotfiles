@@ -26,6 +26,10 @@ alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_
 
 alias fzfm='fzf --multi --bind ctrl-a:select-all --bind ctrl-s:deselect-all'
 
+function fzfd() {
+  find $1 -type f | fzf
+}
+
 #-----------------------------------------------------------------
 # other
 #-----------------------------------------------------------------

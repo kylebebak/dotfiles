@@ -22,7 +22,7 @@ PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 PATH="/usr/local/opt/node@12/bin:$PATH"
 
 # go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
-export GOPATH=$HOME/Code/go
+export GOPATH=$HOME/go
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$GOPATH/bin
 
