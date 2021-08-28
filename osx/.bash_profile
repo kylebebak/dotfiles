@@ -10,6 +10,8 @@ PATH="/usr/local/bin:${PATH}"
 # make sure this shows up before /usr/local/bin in $PATH
 PATH="${HOME}/.local/bin:${PATH}"
 
+PATH="/usr/local/sbin:${PATH}"
+
 # my bin
 PATH="${PATH}:${HOME}/Code/bin"
 
