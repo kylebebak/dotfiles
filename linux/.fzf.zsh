@@ -6,7 +6,7 @@
 
 # mkdir ~/opt/fzf/shell
 # cd ~/opt/fzf/shell
-# wget https://raw.githubusercontent.com/junegunn/fzf/master/shell/completions.zsh
+# wget https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
 # wget https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 
 # Auto-completion
