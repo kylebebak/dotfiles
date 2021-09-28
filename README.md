@@ -52,3 +52,14 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 ## Helpers
 
 The most interesting ones use [fzf](https://github.com/junegunn/fzf) and [yank](https://github.com/mptre/yank) to create fuzzy select utility functions.
+
+## To install
+
+- `zsh`
+- `ripgrep`
+- `fzf`
+- `autojump`
+- `tmux`
+- `node`
+- `yarn`
+- `poetry`
