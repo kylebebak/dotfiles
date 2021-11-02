@@ -7,3 +7,4 @@ alias gd='git diff'
 alias ga='git add'
 alias gr='git reset'
 alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias grename='git branch -m'
