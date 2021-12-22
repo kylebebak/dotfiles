@@ -107,6 +107,9 @@ alias yank="yank-cli -- xsel -b"
 
 alias ta="tmux attach-session -t"
 
+# yarn
+export PATH="$HOME/.yarn/bin:$PATH"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
