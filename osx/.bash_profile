@@ -21,7 +21,8 @@ PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # node
 # we can run nvm without having to load it on shell startup; check out osx/.helpers/nvm.sh
 # node installed with brew, `brew install node@12`
-PATH="/usr/local/opt/node@12/bin:$PATH"
+PATH="/usr/local/opt/node@14/bin:$PATH"
+export NVM_SYMLINK_CURRENT=true
 
 # go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
 export GOPATH=$HOME/go
