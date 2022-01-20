@@ -15,9 +15,6 @@ PATH="/usr/local/sbin:${PATH}"
 # my bin
 PATH="${PATH}:${HOME}/Code/bin"
 
-# postgres.app
-PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
 # node
 # we can run nvm without having to load it on shell startup; check out osx/.helpers/nvm.sh
 # node installed with brew, `brew install node@12`
