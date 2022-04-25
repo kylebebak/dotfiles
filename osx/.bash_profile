@@ -51,12 +51,7 @@ export PATH
 #-----------------------------------------------------------------
 alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 
-# copy path of working directory
-alias cpwd='echo -n `pwd` | pbcopy'
-
 alias chrome='open -a "Google Chrome"'
-alias sbl='open -a "Sublime Text"'
-alias vscode='open -a "Visual Studio Code"'
 
 source ~/.git_aliases
 
