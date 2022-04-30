@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles. The ones worth looking at are `.zshrc`, `.bash_profile`, and the helpers in `.helpers`. Honorable mention for `.tmux.conf`.
+My dotfiles. Most important is `.zshrc`, and the helpers in `.helpers`. Honorable mention for `.tmux.conf`.
 
 ## Local
 
@@ -63,3 +63,4 @@ The most interesting ones use [fzf](https://github.com/junegunn/fzf) and [yank](
 - `node`
 - `yarn`
 - `poetry`
+- `pyenv`
