@@ -1,7 +1,6 @@
 #-----------------------------------------------------------------
 # docker functions and aliases
 #-----------------------------------------------------------------
-alias dkp='docker ps | yank'
 alias dks='docker stop $(docker ps -aq)'
 
 dksh() {
@@ -44,7 +43,7 @@ alias ll='ls -alF'
 
 alias tl='tmux ls'
 alias tn='tmux new -s'
-alias ta='tmux attach -t'
+alias ta='tmux attach-session -t'
 alias tk='tmux kill-session -t'
 
 alias ip='ipython --no-confirm-exit'

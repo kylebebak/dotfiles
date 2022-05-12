@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles. Most important is `.zshrc`, and the helpers in `.helpers`. Honorable mention for `.tmux.conf`.
+My dotfiles. Most important is `.zshrc`. Honorable mention for `.tmux.conf`.
 
 ## Local
 
@@ -8,18 +8,6 @@ To ensure the dotfiles are sourced correctly, clone this repo **into your home d
 
 ```sh
 cd $HOME && ln -s -f dotfiles/dotfiles/.* ./
-```
-
-Then, on OSX, for OSX-specific dotfiles:
-
-```sh
-cd $HOME && ln -s -f dotfiles/osx/.* ./
-```
-
-Or on Linux, for Linux-specific dotfiles:
-
-```sh
-cd $HOME && ln -s -f dotfiles/linux/.* ./
 ```
 
 This will symlink all of the dotfiles into your home directory.
@@ -51,14 +39,14 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 
 ## Helpers
 
-The most interesting ones use [fzf](https://github.com/junegunn/fzf) and [yank](https://github.com/mptre/yank) to create fuzzy select utility functions.
+The most interesting ones use [fzf](https://github.com/junegunn/fzf) to create fuzzy select utility functions.
 
 ## To install
 
 - `zsh`
 - `ripgrep`
 - `fzf`
-- `autojump`
+- `zoxide`
 - `tmux`
 - `node`
 - `yarn`
