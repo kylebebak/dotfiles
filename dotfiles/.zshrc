@@ -40,7 +40,7 @@ source ~/.helpers.sh
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   # br: https://github.com/Canop/broot (A new way to see and navigate directory trees)
-  source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
+  source ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
 
   # make sure /usr/local/bin occurs before /usr/bin in $PATH
   PATH="/usr/local/bin:${PATH}"

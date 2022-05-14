@@ -37,10 +37,6 @@ If one of these combinations doesn't send anything, you can use always use iTerm
 
 Then you can edit your `.zshrc` file to catch this escape sequence, and have it invoke a widget.
 
-## Helpers
-
-The most interesting ones use [fzf](https://github.com/junegunn/fzf) to create fuzzy select utility functions.
-
 ## To install
 
 - `zsh`
@@ -48,6 +44,7 @@ The most interesting ones use [fzf](https://github.com/junegunn/fzf) to create f
 - `fzf`
 - `zoxide`
 - `tmux`
+- `broot`
 - `node`
 - `yarn`
 - `poetry`
