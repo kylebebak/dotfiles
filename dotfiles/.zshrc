@@ -135,14 +135,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
 
   bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
   bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
-
-  ####################
-  # FZF
-  ####################
-
-  if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
-    export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
-  fi
 else
   ####################
   # ZLE
