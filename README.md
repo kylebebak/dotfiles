@@ -33,7 +33,7 @@ Or:
 - <kbd>fn</kbd> + <kbd>ctrl</kbd> + <kbd>arrow_key</kbd>
 - <kbd>fn</kbd> + <kbd>option</kbd> + <kbd>arrow_key</kbd>
 
-If one of these combinations doesn't send anything, you can use always use iTerm2 to have it send any escape sequence you like. Go to **Preferences > Profiles > Keys**, choose a key combo, and instruct it to **Send Escape Sequence**.
+If one of these combinations doesn't send anything, you can always use iTerm2 to have it send any escape sequence you like. Go to **Preferences > Profiles > Keys**, choose a key combo, and instruct it to **Send Escape Sequence**.
 
 Then you can edit your `.zshrc` file to catch this escape sequence, and have it invoke a widget.
 

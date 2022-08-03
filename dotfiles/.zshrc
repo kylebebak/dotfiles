@@ -20,6 +20,9 @@ PATH="$HOME/.yarn/bin:${PATH}"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 PATH="$HOME/.poetry/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # rust
@@ -40,7 +43,8 @@ source ~/.helpers.sh
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   # br: https://github.com/Canop/broot (A new way to see and navigate directory trees)
-  source ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
+  [[ -f ~/.config/broot/launcher/bash/br ]] && source ~/.config/broot/launcher/bash/br
+  [[ -f ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br ]] && source ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
 
   # make sure /usr/local/bin occurs before /usr/bin in $PATH
   PATH="/usr/local/bin:${PATH}"
@@ -139,12 +143,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
     export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
   fi
-
-  # Auto-completion
-  [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-  # Key bindings
-  source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 else
   ####################
   # ZLE
