@@ -49,3 +49,4 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `yarn`
 - `poetry`
 - `pyenv`
+- `nvm`
