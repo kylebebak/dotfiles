@@ -45,8 +45,28 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `zoxide`
 - `tmux`
 - `broot`
+- `delta`
 - `node`
 - `yarn`
 - `poetry`
 - `pyenv`
 - `nvm`
+
+## Multiple SSH keys and `git`
+
+In `~/.ssh/config`:
+
+```
+Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/<work_ssh_key>
+  IdentitiesOnly yes
+
+# Personal GitHub account
+Host github-personal
+  HostName github.com
+  IdentityFile ~/.ssh/<personal_ssh_key>
+  IdentitiesOnly yes
+```
+
+Then run something like `git remote set-url origin git@github-personal:kylebebak/dotfiles.git`. This configures `git` to use personal SSH key when interacting with `kylebebak/dotfiles.git`.
