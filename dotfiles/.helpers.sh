@@ -4,7 +4,7 @@
 alias dks='docker stop $(docker ps -aq)'
 
 dksh() {
-  docker exec -it $1 bash
+  docker exec -it $1 ${2:-bash}
 }
 
 #-----------------------------------------------------------------
