@@ -1,0 +1,4 @@
+# https://beta.ruff.rs/docs/configuration/
+select = ["F", "E", "I001"]
+
+line-length = 120
