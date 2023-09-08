@@ -32,7 +32,8 @@ function fzfd() {
 #-----------------------------------------------------------------
 # ripgrep
 #-----------------------------------------------------------------
-alias rgh='rg --smart-case --hidden --no-ignore'
+alias rga='rg --smart-case --hidden --no-ignore'
+alias rgh='rg --smart-case --hidden'
 alias rg='rg --smart-case'
 
 #-----------------------------------------------------------------
