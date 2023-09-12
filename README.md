@@ -52,7 +52,25 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `pyenv`
 - `nvm`
 
-## Multiple SSH keys and `git`
+## `git`
+
+First, run `cp dotfiles/.gitconfig-template dotfiles/.gitconfig` to create `.gitconfig`, which is ignored, from the template.
+
+### Signing commits
+
+Add the following to `dotfiles/.gitconfig`:
+
+```
+[user]
+  email = ...
+  name = ...
+  signingkey = ...
+
+[commit]
+  gpgsign = true
+```
+
+### Multiple SSH keys
 
 In `~/.ssh/config`:
 
