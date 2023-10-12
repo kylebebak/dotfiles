@@ -28,6 +28,9 @@ eval "$(pyenv init -)"
 # rust
 PATH="$HOME/.cargo/bin:$PATH"
 
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 compinit
 
 # https://github.com/ajeetdsouza/zoxide
