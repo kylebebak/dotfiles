@@ -55,16 +55,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   # make sure this shows up before /usr/local/bin in $PATH
   PATH="${HOME}/.local/bin:${PATH}"
 
-  PATH="/usr/local/sbin:${PATH}"
-
-  # my bin
-  PATH="${PATH}:${HOME}/Code/bin"
-
-  PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-  # node
-  # we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
-  PATH="/usr/local/opt/node@14/bin:$PATH"
+  # node; note that we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
   export NVM_SYMLINK_CURRENT=true
 
   # go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
