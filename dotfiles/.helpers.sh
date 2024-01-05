@@ -7,6 +7,9 @@ dksh() {
   docker exec -it $1 ${2:-bash}
 }
 
+# no reason to use docker-compose anymore, https://docs.docker.com/compose/migrate/
+alias docker-compose='docker compose'
+
 #-----------------------------------------------------------------
 # fzf, including pick-git; https://github.com/kylebebak/pick-git
 #-----------------------------------------------------------------
