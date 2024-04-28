@@ -76,10 +76,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   ####################
   alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
 
-  alias chrome='open -a "Google Chrome"'
-
-  alias redis='redis-server /usr/local/etc/redis.conf'
-
   ####################
   # OTHER
   ####################
