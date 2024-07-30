@@ -49,10 +49,6 @@ Thumbs.db
 bkp.*
 *.bkp/
 
-# Ruby bundler config directory
-######################
-.bundle/
-
 # Sublime Text #
 ######################
 *.sublime-project

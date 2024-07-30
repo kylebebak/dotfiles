@@ -1,3 +1,5 @@
+alias gf='git fetch'
+alias gl='git pull'
 alias gs='git status'
 alias gst='git stash'
 alias gsp='git stash pop'

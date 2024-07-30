@@ -42,7 +42,7 @@ alias rg='rg --smart-case'
 #-----------------------------------------------------------------
 # other
 #-----------------------------------------------------------------
-alias ports='lsof -nP | grep -i listen'
+alias ports='lsof -nP | rg listen'
 alias process='ps -ef | fzf'
 
 function port() {

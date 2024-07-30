@@ -66,23 +66,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   # lua, https://www.lua.org/download.html
   PATH=$PATH:/usr/local/lua-5.4.3/src
 
-  # ruby
-  # add RVM to PATH for scripting, make sure this is the last PATH variable change
-  PATH="$PATH:$HOME/.rvm/bin"
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-  ####################
-  # ALIASES
-  ####################
-  alias grep='grep --color=auto --exclude-dir={.bzr,.cvs,.git,.hg,.svn} -E'
-
-  ####################
-  # OTHER
-  ####################
-  # load notes init script for tab completions
-  which notes >/dev/null && . "$( notes -i )"
-
-  # helper functions
+  # Helper functions
   for f in ~/.helpers/*; do source $f; done
 
   ####################
