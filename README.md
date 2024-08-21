@@ -51,6 +51,7 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `poetry`
 - `pyenv`
 - `nvm`
+- `mpv`
 
 ## `git`
 
@@ -88,3 +89,10 @@ Host github-personal
 ```
 
 Then run something like `git remote set-url origin git@github-personal:kylebebak/dotfiles.git`. This configures `git` to use personal SSH key when interacting with `kylebebak/dotfiles.git`.
+
+## `mpv`
+
+```sh
+mkdir -p ~/.config/mpv
+ln -s -f ~/dotfiles/mpv/* ~/.config/mpv/
+```
