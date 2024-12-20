@@ -57,6 +57,14 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 
 First, run `cp dotfiles/.gitconfig-template dotfiles/.gitconfig` to create `.gitconfig`, which is ignored, from the template.
 
+### Repos
+
+My repos are under:
+
+- https://github.com/kylebebak
+- https://github.com/fortana-co
+- https://github.com/brigada-mx
+
 ### Signing commits
 
 Add the following to `dotfiles/.gitconfig`:
