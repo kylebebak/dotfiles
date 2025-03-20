@@ -44,8 +44,12 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `fzf`
 - `zoxide`
 - `tmux`
+- `fd`
+- `bat`
 - `broot`
 - `delta`
+- `jq`
+- `tldr`
 - `node`
 - `yarn`
 - `poetry`
