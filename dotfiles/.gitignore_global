@@ -72,3 +72,5 @@ sandbox/*
 
 # Docker
 docker-compose.custom*
+
+.aider*

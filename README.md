@@ -73,7 +73,7 @@ My repos are under:
 
 Add the following to `dotfiles/.gitconfig`:
 
-```
+```toml
 [user]
   email = ...
   name = ...
@@ -81,6 +81,10 @@ Add the following to `dotfiles/.gitconfig`:
 
 [commit]
   gpgsign = true
+
+[gpg]
+  program = /opt/homebrew/bin/gpg
+# Path to gpg executable
 ```
 
 ### Multiple SSH keys
