@@ -1,4 +1,5 @@
-# https://beta.ruff.rs/docs/configuration/
-select = ["F", "E", "I001"]
-
 line-length = 120
+
+[lint]
+
+select = ["F", "E", "W", "B", "ERA", "I001", "RUF006"]

@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git poetry)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -18,12 +18,6 @@ PATH="$HOME/.yarn/bin:${PATH}"
 
 # fzf: https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-PATH="$HOME/.poetry/bin:$PATH"
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # rust
 PATH="$HOME/.cargo/bin:$PATH"
@@ -45,10 +39,6 @@ source ~/.helpers.sh
 ####################
 
 if [[ $OSTYPE == 'darwin'* ]]; then
-  # br: https://github.com/Canop/broot (A new way to see and navigate directory trees)
-  [[ -f ~/.config/broot/launcher/bash/br ]] && source ~/.config/broot/launcher/bash/br
-  [[ -f ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br ]] && source ~/Library/Application\ Support/org.dystroy.broot/launcher/bash/br
-
   # make sure /usr/local/bin occurs before /usr/bin in $PATH
   PATH="/usr/local/bin:${PATH}"
 

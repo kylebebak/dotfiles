@@ -16,7 +16,7 @@ Run `find -L $HOME -maxdepth 1 -type l -print` to list broken sym links.
 
 ## ZLE and iTerm
 
-ZLE, the **zsh line editor**, is very cool, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it. If you use `zsh` it's worth a read.
+ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it.
 
 To define some keyboard input as a shortcut for invoking a ZLE widget, it helps to know what **escape sequence** is sent by a given keyboard input. To find out, use `od -c`. `od` is the BSD **octal, decimal, hex, ASCII dump**. Run it, and try pressing one of the following key combinations:
 
@@ -46,14 +46,10 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `tmux`
 - `fd`
 - `bat`
-- `broot`
 - `delta`
 - `jq`
 - `tldr`
-- `node`
-- `yarn`
-- `poetry`
-- `pyenv`
+- `uv`
 - `nvm`
 - `mpv`
 
