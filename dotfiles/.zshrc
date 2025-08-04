@@ -3,8 +3,6 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
@@ -14,16 +12,11 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
-PATH="$HOME/.yarn/bin:${PATH}"
-
 # fzf: https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rust
 PATH="$HOME/.cargo/bin:$PATH"
-
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 compinit
 
@@ -52,9 +45,6 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export GOPATH=$HOME/go
   PATH=$PATH:/usr/local/go/bin
   PATH=$PATH:$GOPATH/bin
-
-  # lua, https://www.lua.org/download.html
-  PATH=$PATH:/usr/local/lua-5.4.3/src
 
   # Helper functions
   for f in ~/.helpers/*; do source $f; done
