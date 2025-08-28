@@ -12,6 +12,11 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 
+# Number of commands to remember in memory (in-session)
+export HISTSIZE=50000
+# Number of commands to save to the history file
+export SAVEHIST=50000
+
 # fzf: https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
