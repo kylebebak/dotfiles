@@ -7,10 +7,21 @@ source $ZSH/oh-my-zsh.sh
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt extended_glob
-setopt inc_append_history
+
+# This opt shares history between zsh sessions, hit enter in any session to pull in latest from $HISTFILE
+setopt share_history  # Enabled by default with https://github.com/ohmyzsh/ohmyzsh
+
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+
+# We can remove entries from $HISTFILE, then run this function
+function reload_hist() {
+  # Clear history, reload session, reload history
+  history -p
+  source ~/.zshrc
+  fc -R $HISTFILE
+}
 
 # Number of commands to remember in memory (in-session)
 export HISTSIZE=50000
