@@ -29,3 +29,7 @@
 
 [pull]
 	rebase = false
+
+# https://stackoverflow.com/questions/37770467
+[push]
+	autoSetupRemote = true
