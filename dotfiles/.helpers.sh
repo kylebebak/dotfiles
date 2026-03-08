@@ -32,6 +32,12 @@ function fzfd() {
   find $1 -type f | fzf
 }
 
+function gww() {
+  # https://git-scm.com/docs/git-worktree
+  cd "$(git rev-parse --show-toplevel)"
+  git worktree add -b $1 .worktrees/$1
+}
+
 #-----------------------------------------------------------------
 # ripgrep
 #-----------------------------------------------------------------
@@ -55,5 +61,8 @@ alias tl='tmux ls'
 alias tn='tmux new -s'
 alias ta='tmux attach-session -t'
 alias tk='tmux kill-session -t'
+
+# After creating venv in home directory with `uv venv`, we can activate it and use this as "system python"
+alias ap='source ~/.venv/bin/activate'
 
 alias ip='ipython --no-confirm-exit'
