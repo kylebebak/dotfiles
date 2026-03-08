@@ -10,6 +10,7 @@ alias gc='git commit'
 alias gm='git merge'
 alias gd='git diff'
 alias ga='git add'
-alias gr='git reset'
+alias gr='git rebase'
 alias gcp='git cherry-pick'
 alias gh="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias gw="git worktree"
