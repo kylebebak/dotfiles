@@ -102,6 +102,29 @@ Host github-personal
 
 Then run something like `git remote set-url origin git@github-personal:kylebebak/dotfiles.git`. This configures `git` to use personal SSH key when interacting with `kylebebak/dotfiles.git`.
 
+## `claude`
+
+See https://github.com/kylebebak/claude, and `~/.claude`
+
+To set up `claude` to use a language server for a given project, add e.g. the following to a project-specific `.claude/settings.json`:
+
+```json
+{
+  "lspServers": {
+    "python": {
+      "command": "<path/to/pyright-langserver>",
+      "args": ["--stdio"],
+      "extensionToLanguage": {
+        ".py": "python"
+      },
+      "env": {
+        "VIRTUAL_ENV": "<path/to/.venv>"
+      }
+    }
+  }
+}
+```
+
 ## `mpv`
 
 ```sh
