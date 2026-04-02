@@ -1,6 +1,7 @@
 alias gp='git push'
 alias gf='git fetch'
 alias gl='git pull'
+alias glr='git pull --rebase'
 alias gs='git status'
 alias gst='git stash'
 alias gsp='git stash pop'
