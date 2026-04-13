@@ -31,9 +31,6 @@ export SAVEHIST=50000
 # fzf: https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# rust
-PATH="$HOME/.cargo/bin:$PATH"
-
 compinit
 
 # https://github.com/ajeetdsouza/zoxide
@@ -47,97 +44,57 @@ source ~/.helpers.sh
 # OS-SPECIFIC CONFIG
 ####################
 
-if [[ $OSTYPE == 'darwin'* ]]; then
-  # make sure /usr/local/bin occurs before /usr/bin in $PATH
-  PATH="/usr/local/bin:${PATH}"
+# node; note that we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
+export NVM_SYMLINK_CURRENT=true
 
-  # make sure this shows up before /usr/local/bin in $PATH
-  PATH="${HOME}/.local/bin:${PATH}"
+# go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
+export GOPATH=$HOME/go
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:$GOPATH/bin
 
-  # node; note that we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
-  export NVM_SYMLINK_CURRENT=true
+# Helper functions
+for f in ~/.helpers/*; do source $f; done
 
-  # go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
-  export GOPATH=$HOME/go
-  PATH=$PATH:/usr/local/go/bin
-  PATH=$PATH:$GOPATH/bin
+####################
+# ZLE
+####################
 
-  # Helper functions
-  for f in ~/.helpers/*; do source $f; done
+# http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#index-bindkey
 
-  ####################
-  # ZLE
-  ####################
+# `^` for `ctrl` and `\e` for `alt`
 
-  # http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/
-  # http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#index-bindkey
+# http://stackoverflow.com/questions/7767702
+# in iterm: Preferences > Profiles > Keys
+# choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;5A
+# escape sequence is caught here caught and invokes a widget
 
-  # `^` for `ctrl` and `\e` for `alt`
+# disable or alter conflicting hotkeys: System Preferences > Keyboard > Shortcuts
 
-  # http://stackoverflow.com/questions/7767702
-  # in iterm: Preferences > Profiles > Keys
-  # choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;5A
-  # escape sequence is caught here caught and invokes a widget
+# widget for killing line, and piping it from the kill ring to pbcopy
+function copy-kill-whole-line {
+  zle kill-whole-line
+  echo -n $CUTBUFFER | pbcopy
+}
+zle -N copy-kill-whole-line
 
-  # disable or alter conflicting hotkeys: System Preferences > Keyboard > Shortcuts
+bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
+bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
 
-  # widget for killing line, and piping it from the kill ring to pbcopy
-  function copy-kill-whole-line {
-    zle kill-whole-line
+# widget for selecting a region, or copying and killing the selected region
+function select-copy-kill-region {
+  if [ "$REGION_ACTIVE" -eq "0" ]; then
+    zle select-a-word
+  else
+    zle kill-region
     echo -n $CUTBUFFER | pbcopy
-  }
-  zle -N copy-kill-whole-line
+    zle yank
+  fi
+}
+zle -N select-copy-kill-region
 
-  bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
-  bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
-
-  # widget for selecting a region, or copying and killing the selected region
-  function select-copy-kill-region {
-    if [ "$REGION_ACTIVE" -eq "0" ]; then
-      zle select-a-word
-    else
-      zle kill-region
-      echo -n $CUTBUFFER | pbcopy
-      zle yank
-    fi
-  }
-  zle -N select-copy-kill-region
-
-  bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
-  bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
-else
-  ####################
-  # ZLE
-  ####################
-
-  # widget for killing line, and piping it from the kill ring to pbcopy
-  function copy-kill-whole-line {
-    zle kill-whole-line
-    echo -n $CUTBUFFER | xsel -b
-  }
-  zle -N copy-kill-whole-line
-
-  bindkey '^@' copy-kill-whole-line # `ctrl + space`
-  bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up`
-
-  ####################
-  # FZF
-  ####################
-
-  # wget http://mirrors.kernel.org/ubuntu/pool/universe/f/fzf/fzf_0.20.0-1_amd64.deb
-  # sudo dpkg -i fzf_0.20.0-1_amd64.deb
-
-  # mkdir ~/opt/fzf/shell
-  # cd ~/opt/fzf/shell
-  # wget https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-  # wget https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
-
-  # Auto-completion
-  [[ $- == *i* ]] && source "${HOME}/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-  # Key bindings
-  source "${HOME}/opt/fzf/shell/key-bindings.zsh"
-fi
+bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
+bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
 
 # remove duplicates
 PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
