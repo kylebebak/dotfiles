@@ -40,10 +40,6 @@ source ~/.git_aliases
 
 source ~/.helpers.sh
 
-####################
-# OS-SPECIFIC CONFIG
-####################
-
 # node; note that we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
 export NVM_SYMLINK_CURRENT=true
 

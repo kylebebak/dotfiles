@@ -127,6 +127,10 @@ To set up `claude` to use a language server for a given project, add e.g. the fo
 
 ## `mpv`
 
+Don't install with `brew`, it includes too much cruft. Install app bundle from https://github.com/mpv-player/mpv/releases, then run `ln -s "/Applications/mpv.app/Contents/MacOS/mpv" ~/.local/bin/mpv` to get the CLI. It must be "unquarantined" via **Privacy & Security** settings.
+
+Then symlink config to where mpv expects to read it:
+
 ```sh
 mkdir -p ~/.config/mpv
 ln -s -f ~/dotfiles/mpv/* ~/.config/mpv/

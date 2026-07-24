@@ -52,4 +52,9 @@ docker-compose.custom*
 # Notes
 .*.md
 
+# Deps
+node_modules/*
+
 sandbox/*
+
+**/.claude/settings.local.json

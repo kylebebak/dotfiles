@@ -17,3 +17,6 @@ export PATH
 
 # rust
 PATH="$HOME/.cargo/bin:$PATH"
+
+# duckdb
+PATH="${HOME}/.duckdb/cli/latest":$PATH
