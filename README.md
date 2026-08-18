@@ -102,29 +102,6 @@ Host github-personal
 
 Then run something like `git remote set-url origin git@github-personal:kylebebak/dotfiles.git`. This configures `git` to use personal SSH key when interacting with `kylebebak/dotfiles.git`.
 
-## `claude`
-
-See https://github.com/kylebebak/claude, and `~/.claude`
-
-To set up `claude` to use a language server for a given project, add e.g. the following to a project-specific `.claude/settings.json`:
-
-```json
-{
-  "lspServers": {
-    "python": {
-      "command": "<path/to/pyright-langserver>",
-      "args": ["--stdio"],
-      "extensionToLanguage": {
-        ".py": "python"
-      },
-      "env": {
-        "VIRTUAL_ENV": "<path/to/.venv>"
-      }
-    }
-  }
-}
-```
-
 ## `mpv`
 
 Don't install with `brew`, it includes too much cruft. Install app bundle from https://github.com/mpv-player/mpv/releases, then run `ln -s "/Applications/mpv.app/Contents/MacOS/mpv" ~/.local/bin/mpv` to get the CLI. It must be "unquarantined" via **Privacy & Security** settings.

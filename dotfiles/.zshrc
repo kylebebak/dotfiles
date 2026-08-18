@@ -29,7 +29,7 @@ export HISTSIZE=50000
 export SAVEHIST=50000
 
 # fzf: https://github.com/junegunn/fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 compinit
 
@@ -95,5 +95,3 @@ bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
 # remove duplicates
 PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
 export PATH
-
-source ~/.docker/init-zsh.sh || true # Added by Docker Desktop
