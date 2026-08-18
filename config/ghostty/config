@@ -1,0 +1,15 @@
+# Global Hotkey: Focus / Toggle Ghostty Window
+keybind = global:opt+space=toggle_visibility
+
+# Switch Tab Focus (Option + Command + Left/Right)
+keybind = alt+super+left=previous_tab
+keybind = alt+super+right=next_tab
+
+# Reorder Tabs (Ctrl + Command + Left/Right)
+keybind = shift+super+left=move_tab:-1
+keybind = shift+super+right=move_tab:1
+
+# Custom Escape Sequence for Ctrl + Up Arrow
+keybind = ctrl+up=text:\x1b[1;5A
+
+window-save-state = always

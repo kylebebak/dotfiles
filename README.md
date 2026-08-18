@@ -106,9 +106,14 @@ Then run something like `git remote set-url origin git@github-personal:kylebebak
 
 Don't install with `brew`, it includes too much cruft. Install app bundle from https://github.com/mpv-player/mpv/releases, then run `ln -s "/Applications/mpv.app/Contents/MacOS/mpv" ~/.local/bin/mpv` to get the CLI. It must be "unquarantined" via **Privacy & Security** settings.
 
-Then symlink config to where mpv expects to read it:
+Remove it from quarantined apps: `xattr -d com.apple.quarantine /Applications/mpv.app`
+
+## `.config`
 
 ```sh
 mkdir -p ~/.config/mpv
-ln -s -f ~/dotfiles/mpv/* ~/.config/mpv/
+ln -s -f ~/dotfiles/config/mpv/* ~/.config/mpv/
+
+mkdir -p ~/.config/ghostty
+ln -s -f ~/dotfiles/config/ghostty/* ~/.config/ghostty/
 ```
