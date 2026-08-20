@@ -12,7 +12,7 @@ fi
 
 PATH="/opt/homebrew/bin:$PATH"
 
-PATH="${HOME}/.nvm/current/bin:$PATH"
+PATH="${HOME}/.local/share/fnm/aliases/default/bin:$PATH"
 export PATH
 
 # rust

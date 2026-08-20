@@ -51,10 +51,6 @@ alias rg='rg --smart-case'
 alias ports='lsof -nP | rg listen'
 alias process='ps -ef | fzf'
 
-function port() {
-  lsof -i tcp:$1
-}
-
 alias ll='ls -alF'
 
 alias tl='tmux ls'
@@ -66,6 +62,7 @@ alias tk='tmux kill-session -t'
 alias ap='source ~/.venv/bin/activate'
 
 alias ip='ipython --no-confirm-exit'
+alias oxf="oxfmt -c ~/.oxfmtrc.json"
 
 #-----------------------------------------------------------------
 # youtube-music-dl

@@ -2,4 +2,4 @@ line-length = 120
 
 [lint]
 
-select = ["F", "E", "W", "B", "ERA", "I001", "RUF006"]
+extend-select = ["F", "E", "W"]

@@ -13,3 +13,5 @@ keybind = shift+super+right=move_tab:1
 keybind = ctrl+up=text:\x1b[1;5A
 
 window-save-state = always
+
+background-opacity = 0.95

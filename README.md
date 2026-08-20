@@ -14,28 +14,19 @@ This will symlink all of the dotfiles into your home directory.
 
 Run `find -L $HOME -maxdepth 1 -type l -print` to list broken sym links.
 
-## ZLE and iTerm
+## `.config`
 
-ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it.
+```sh
+mkdir -p ~/.config/mpv
+ln -s -f ~/dotfiles/config/mpv/* ~/.config/mpv/
 
-To define some keyboard input as a shortcut for invoking a ZLE widget, it helps to know what **escape sequence** is sent by a given keyboard input. To find out, use `od -c`. `od` is the BSD **octal, decimal, hex, ASCII dump**. Run it, and try pressing one of the following key combinations:
+mkdir -p ~/.config/ghostty
+ln -s -f ~/dotfiles/config/ghostty/* ~/.config/ghostty/
+```
 
-- <kbd>shift</kbd> + <kbd>some_key</kbd>
-- <kbd>ctrl</kbd> + <kbd>some_key</kbd>
-- <kbd>alt</kbd> + <kbd>some_key</kbd>
-- <kbd>super</kbd> + <kbd>some_key</kbd>
+## ZLE
 
-Or:
-
-- <kbd>shift</kbd> + <kbd>ctrl</kbd> + <kbd>arrow_key</kbd>
-- <kbd>shift</kbd> + <kbd>option</kbd> + <kbd>arrow_key</kbd>
-- <kbd>fn</kbd> + <kbd>arrow_key</kbd>
-- <kbd>fn</kbd> + <kbd>ctrl</kbd> + <kbd>arrow_key</kbd>
-- <kbd>fn</kbd> + <kbd>option</kbd> + <kbd>arrow_key</kbd>
-
-If one of these combinations doesn't send anything, you can always use iTerm2 to have it send any escape sequence you like. Go to **Preferences > Profiles > Keys**, choose a key combo, and instruct it to **Send Escape Sequence**.
-
-Then you can edit your `.zshrc` file to catch this escape sequence, and have it invoke a widget.
+ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it. Used for e.g. `copy-kill-whole-line`, see `dotfiles/.zshrc`.
 
 ## To install
 
@@ -48,16 +39,15 @@ Then you can edit your `.zshrc` file to catch this escape sequence, and have it 
 - `bat`
 - `delta`
 - `jq`
-- `tldr`
 - `uv`
-- `nvm`
+- `fnm`
 - `mpv`
 
 ## `git`
 
 First, run `cp dotfiles/.gitconfig-template dotfiles/.gitconfig` to create `.gitconfig`, which is ignored, from the template.
 
-### Repos
+## Repos
 
 My repos are under:
 
@@ -65,7 +55,7 @@ My repos are under:
 - https://github.com/fortana-co
 - https://github.com/brigada-mx
 
-### Signing commits
+## Signing commits
 
 Add the following to `dotfiles/.gitconfig`:
 
@@ -83,7 +73,7 @@ Add the following to `dotfiles/.gitconfig`:
 # Path to gpg executable
 ```
 
-### Multiple SSH keys
+## Multiple SSH keys
 
 In `~/.ssh/config`:
 
@@ -108,12 +98,10 @@ Don't install with `brew`, it includes too much cruft. Install app bundle from h
 
 Remove it from quarantined apps: `xattr -d com.apple.quarantine /Applications/mpv.app`
 
-## `.config`
+## `fnm`
 
 ```sh
-mkdir -p ~/.config/mpv
-ln -s -f ~/dotfiles/config/mpv/* ~/.config/mpv/
-
-mkdir -p ~/.config/ghostty
-ln -s -f ~/dotfiles/config/ghostty/* ~/.config/ghostty/
+fnm install <version>
+fnm default <version>
+npm install -g oxlint  # Installed under ${HOME}/.local/share/fnm/aliases/default/bin
 ```

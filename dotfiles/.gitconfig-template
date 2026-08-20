@@ -1,3 +1,6 @@
+[user]
+	email = kylebebak@gmail.com
+
 # https://github.com/dandavison/delta
 [core]
 	excludesfile = ~/.gitignore_global

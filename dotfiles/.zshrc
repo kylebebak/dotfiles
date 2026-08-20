@@ -37,19 +37,17 @@ compinit
 eval "$(zoxide init zsh)"
 
 source ~/.git_aliases
-
 source ~/.helpers.sh
 
-# node; note that we can run nvm without having to load it on shell startup; check out .helpers/nvm.sh
-export NVM_SYMLINK_CURRENT=true
+# fnm
+FNM_PATH="/opt/homebrew/opt/fnm/bin"
+if [ -d "$FNM_PATH" ]; then
+  eval "$(fnm env --shell zsh)"
+fi
 
-# go, https://golang.org/doc/code.html, https://dmitri.shuralyov.com/blog/18
-export GOPATH=$HOME/go
-PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$GOPATH/bin
-
-# Helper functions
-for f in ~/.helpers/*; do source $f; done
+# remove duplicates
+PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
+export PATH
 
 ####################
 # ZLE
@@ -60,13 +58,7 @@ for f in ~/.helpers/*; do source $f; done
 
 # `^` for `ctrl` and `\e` for `alt`
 
-# http://stackoverflow.com/questions/7767702
-# in iterm: Preferences > Profiles > Keys
-# choose a key combo, e.g. ctrl + up_arrow, and instruct it to send escape sequence, e.g. ^[[1;5A
-# escape sequence is caught here caught and invokes a widget
-
 # disable or alter conflicting hotkeys: System Preferences > Keyboard > Shortcuts
-
 # widget for killing line, and piping it from the kill ring to pbcopy
 function copy-kill-whole-line {
   zle kill-whole-line
@@ -74,24 +66,4 @@ function copy-kill-whole-line {
 }
 zle -N copy-kill-whole-line
 
-bindkey '\e^[[A' copy-kill-whole-line # `alt + up_arrow`
 bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
-
-# widget for selecting a region, or copying and killing the selected region
-function select-copy-kill-region {
-  if [ "$REGION_ACTIVE" -eq "0" ]; then
-    zle select-a-word
-  else
-    zle kill-region
-    echo -n $CUTBUFFER | pbcopy
-    zle yank
-  fi
-}
-zle -N select-copy-kill-region
-
-bindkey '\e^[[B' select-copy-kill-region # `alt + down_arrow`
-bindkey '^[[1;5B' select-copy-kill-region # `ctrl + down_arrow`
-
-# remove duplicates
-PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
-export PATH
