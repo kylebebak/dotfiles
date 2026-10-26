@@ -68,19 +68,3 @@ alias oxf="oxfmt -c ~/.oxfmtrc.json"
 # youtube-music-dl
 #-----------------------------------------------------------------
 export YMD_OUTPUT_DIR="$HOME/Google Drive/My Drive/Music"
-
-#-----------------------------------------------------------------
-# navidrome
-#-----------------------------------------------------------------
-# IMPORTANT: DataFolder and CacheFolder must live on the local disk.
-# Also, SQLite cannot run on the Google Drive virtual filesystem
-export ND_MUSICFOLDER="$HOME/Google Drive/My Drive/Music"
-export ND_DATAFOLDER="$HOME/.local/share/navidrome"
-export ND_CACHEFOLDER="$HOME/.cache/navidrome"
-
-# Scan on startup, but don't checksum every file
-export ND_SCANSCHEDULE="@every 24h"
-
-export ND_ADDRESS=localhost
-
-export ND_SCANNER_PURGEMISSING=always
