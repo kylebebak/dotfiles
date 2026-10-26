@@ -67,3 +67,8 @@ function copy-kill-whole-line {
 zle -N copy-kill-whole-line
 
 bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
+
+# Default path for go toolchain (e.g. go, gofmt)
+export PATH="/usr/local/go/bin:$PATH"
+# Default location of "tools"/executabled installed by go
+export PATH="$HOME/go/bin:$PATH"
