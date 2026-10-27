@@ -31,6 +31,14 @@ export SAVEHIST=50000
 # fzf: https://github.com/junegunn/fzf
 source <(fzf --zsh)
 
+# Pull in history written by other shells before fzf builds its list
+_fzf_history_widget_fresh() {
+  builtin fc -RI
+  fzf-history-widget
+}
+zle -N _fzf_history_widget_fresh
+bindkey -M emacs '^R' _fzf_history_widget_fresh
+
 compinit
 
 # https://github.com/ajeetdsouza/zoxide
