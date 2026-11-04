@@ -1,0 +1,20 @@
+onboarding = false
+
+[ui]
+hide_tab_bar_when_single_tab = true
+
+[ui.toast]
+delivery = "herdr"
+
+[keys]
+new_workspace = "prefix+shift+n"
+close_workspace = "prefix+shift+d"
+
+previous_workspace = "shift+up"
+next_workspace = "shift+down"
+
+previous_tab = "shift+left"
+next_tab = "shift+right"
+
+move_tab_previous = "ctrl+shift+left"
+move_tab_next = "ctrl+shift+right"

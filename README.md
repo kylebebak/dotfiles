@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles. Most important is `.zshrc`. Honorable mention for `.tmux.conf`.
+My dotfiles. Most important is `.zshrc`.
 
 ## Local
 
@@ -22,6 +22,11 @@ ln -s -f ~/dotfiles/config/mpv/* ~/.config/mpv/
 
 mkdir -p ~/.config/ghostty
 ln -s -f ~/dotfiles/config/ghostty/* ~/.config/ghostty/
+
+# Link only config.toml; the rest of ~/.config/herdr is runtime state (logs, sockets, sessions)
+mkdir -p ~/.config/herdr
+rm -f ~/.config/herdr/config.toml
+ln -s -f ~/dotfiles/config/herdr/config.toml ~/.config/herdr/config.toml
 ```
 
 ## ZLE
@@ -35,6 +40,7 @@ ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh
 - `fzf`
 - `zoxide`
 - `tmux`
+- `herdr`
 - `fd`
 - `bat`
 - `delta`

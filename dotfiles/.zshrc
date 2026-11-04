@@ -80,3 +80,5 @@ bindkey '^[[1;5A' copy-kill-whole-line # `ctrl + up_arrow`
 export PATH="/usr/local/go/bin:$PATH"
 # Default location of "tools"/executabled installed by go
 export PATH="$HOME/go/bin:$PATH"
+
+[ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
