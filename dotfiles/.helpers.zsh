@@ -13,18 +13,18 @@ alias docker-compose='docker compose'
 #-----------------------------------------------------------------
 # fzf, including pick-git; https://github.com/kylebebak/pick-git
 #-----------------------------------------------------------------
-alias gbp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch"
-alias gtp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function tag"
-alias ghp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit"
-alias grp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog"
-alias gfp="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file"
+alias gbp="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function branch"
+alias gtp="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function tag"
+alias ghp="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function commit"
+alias grp="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function commit_reflog"
+alias gfp="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function file"
 
-alias gbpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_file"
-alias ghpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_file"
-alias grpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function commit_reflog_file"
-alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function file_commit"
+alias gbpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function branch_file"
+alias ghpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function commit_file"
+alias grpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function commit_reflog_file"
+alias gpf="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function file_commit"
 
-alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases --function branch_compare"
+alias gbc="pick-git --shell /bin/bash --rcfile ~/.git_aliases.zsh --function branch_compare"
 
 alias fzfm='fzf --multi --bind ctrl-a:select-all --bind ctrl-s:deselect-all'
 
@@ -44,6 +44,13 @@ function gww() {
 alias rga='rg --smart-case --hidden --no-ignore'
 alias rgh='rg --smart-case --hidden'
 alias rg='rg --smart-case'
+
+#-----------------------------------------------------------------
+# herdr
+#-----------------------------------------------------------------
+alias hl='herdr session list'
+alias ha='herdr session attach'
+alias hs='herdr session stop'
 
 #-----------------------------------------------------------------
 # other

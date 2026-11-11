@@ -44,8 +44,8 @@ compinit
 # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
-source ~/.git_aliases
-source ~/.helpers.sh
+source ~/.git_aliases.zsh
+source ~/.helpers.zsh
 
 # fnm
 FNM_PATH="/opt/homebrew/opt/fnm/bin"
