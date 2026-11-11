@@ -1,4 +1,1 @@
 .ignore/
-
-# This file can have sensitive data, e.g. signingkey
-dotfiles/.gitconfig

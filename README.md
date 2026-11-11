@@ -49,10 +49,6 @@ ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh
 - `fnm`
 - `mpv`
 
-## `git`
-
-First, run `cp dotfiles/.gitconfig-template dotfiles/.gitconfig` to create `.gitconfig`, which is ignored, from the template.
-
 ## Repos
 
 My repos are under:
@@ -61,25 +57,7 @@ My repos are under:
 - https://github.com/fortana-co
 - https://github.com/brigada-mx
 
-## Signing commits
-
-Add the following to `dotfiles/.gitconfig`:
-
-```toml
-[user]
-  email = ...
-  name = ...
-  signingkey = ...
-
-[commit]
-  gpgsign = true
-
-[gpg]
-  program = /opt/homebrew/bin/gpg
-# Path to gpg executable
-```
-
-## Multiple SSH keys
+## Multiple SSH keys for GitHub
 
 In `~/.ssh/config`:
 
