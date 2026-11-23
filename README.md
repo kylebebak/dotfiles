@@ -35,6 +35,10 @@ rm -f ~/.config/herdr/config.toml
 ln -s -f ~/dotfiles/config/herdr/config.toml ~/.config/herdr/config.toml
 ```
 
+## Work
+
+Work-specific stuff can go in `~/.work`. Every file in `~/.work/` is sourced, in alphabetical order, if the directory exists.
+
 ## ZLE
 
 ZLE is the **zsh line editor**, and [this post](http://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/) explains how to get the most out of it. Used for e.g. `copy-kill-whole-line`, see `dotfiles/.zshrc`.

@@ -53,10 +53,6 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm env --shell zsh)"
 fi
 
-# remove duplicates
-PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
-export PATH
-
 ####################
 # ZLE
 ####################
@@ -81,4 +77,20 @@ export PATH="/usr/local/go/bin:$PATH"
 # Default location of "tools"/executabled installed by go
 export PATH="$HOME/go/bin:$PATH"
 
-[ -f ~/.secrets.zsh ] && source ~/.secrets.zsh
+####################
+# Prompt
+####################
+
+# robbyrussell look, split over two lines.
+# Line 1: last path segment and git info (git_prompt_info uses the theme's git:(branch) ✗ format).
+# Line 2: green arrow, red when the last command failed.
+setopt PROMPT_SUBST
+PROMPT=$'%B%F{cyan}%c%f%b $(git_prompt_info)\n%B%(?.%F{green}.%F{red})➜%f%b '
+
+# Work-specific; source files in ~/.work, if dir exists
+for f in ~/.work/*(-.N); do source "$f"; done
+unset f
+
+# Remove duplicates
+PATH=`echo -n $PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'`
+export PATH
