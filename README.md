@@ -14,6 +14,12 @@ This will symlink all of the dotfiles into your home directory.
 
 Run `find -L $HOME -maxdepth 1 -type l -print` to list broken sym links.
 
+Create a directory for git repos:
+
+```sh
+mkdir ~/repos
+```
+
 ## `.config`
 
 ```sh
