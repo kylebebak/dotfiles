@@ -3,6 +3,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
+# Pin history to the real file, so subshells like kubie that set ZDOTDIR to a temp dir don't disable shared history
+export HISTFILE="$HOME/.zsh_history"
+
 source $ZSH/oh-my-zsh.sh
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
