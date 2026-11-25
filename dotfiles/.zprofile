@@ -1,19 +1,30 @@
-# This runs before .zshrc; for Sublime Text to pick up changes to path, they should be made here, not in .zshrc
-# make sure /usr/local/bin occurs before /usr/bin in $PATH
-PATH="/usr/local/bin:${PATH}"
+# Login shells only. On macOS, terminal emulators start login shells, so this
+# runs once per terminal window, before .zshrc. Put PATH changes here, not in
+# .zshrc, so GUI apps launched from a login shell (e.g. Sublime Text) see them.
 
-# make sure this shows up before /usr/local/bin in $PATH
-PATH="${HOME}/.local/bin:${PATH}"
+# Drop duplicate PATH entries, in all shells that read this file.
+typeset -U path PATH
 
+PATH="/usr/local/bin:$PATH"
+
+PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew: adds /opt/homebrew/{bin,sbin}
 if [[ -f /opt/homebrew/bin/brew ]]; then
   # Doesn't error on older versions of brew
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-PATH="/opt/homebrew/bin:$PATH"
-
-PATH="${HOME}/.local/share/fnm/aliases/default/bin:$PATH"
-export PATH
+# fnm's default node, so GUI apps and non-interactive shells get a node.
+# .zshrc also runs `fnm env` for per-directory version switching.
+PATH="$HOME/.local/share/fnm/aliases/default/bin:$PATH"
 
 # rust
 PATH="$HOME/.cargo/bin:$PATH"
+
+# Default path for go toolchain (e.g. go, gofmt)
+PATH="/usr/local/go/bin:$PATH"
+# Default location of "tools"/executables installed by go
+PATH="$HOME/go/bin:$PATH"
+
+export PATH
